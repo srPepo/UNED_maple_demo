@@ -4,8 +4,8 @@ Pequeña demo del proyecto UNED para Maple con versión Tutor 15.2.0
 
 ## Descarga:
 
-git clone https://github.com/srPepo/UNED_Maple_Demo.git \
-  "$(tutor config printroot)/env/build/openedx/themes/UNED_maple_demo"
+`git clone https://github.com/srPepo/UNED_Maple_Demo.git \
+  "$(tutor config printroot)/env/build/openedx/themes/UNED_maple_demo"`
 
 
 
