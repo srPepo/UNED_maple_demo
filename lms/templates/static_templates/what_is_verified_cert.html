@@ -1,0 +1,192 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Frequently asked questions about credentials")}</%block>
+
+<style>
+    body {
+        font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 1rem;
+        font-style: normal;
+        line-height: 1em;
+        background: #f1f1f1;
+    }
+    
+    .container.about, section.about.outside-app, .view-profile .profile-self .wrapper-profile-field-account-privacy .about.u-field-account_privacy, .view-profile .about.wrapper-profile-sections, .view-profile .about.badge-set-display {
+        padding: 20px 30px 120px;
+    }
+    
+    @media (min-width: 768px){}
+    .container, section.outside-app, .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .wrapper-profile-sections, .view-profile .badge-set-display {
+        margin: 0 auto;
+        padding: 40px 0;
+        max-width: 1180px;
+        min-width: 760px;
+        width: 100%;
+    }
+    
+    .container, section.outside-app, .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .wrapper-profile-sections, .view-profile .badge-set-display {
+        box-sizing: border-box;
+    }
+    
+    article, aside, details, figcaption, figure, footer, header, nav, section {
+        display: block;
+    }
+    
+    p.uned-h1{
+        font-size: 26px;
+        line-height: 30px;
+        margin: 10px 0px;
+        font-family: "Verdana";
+        font-weight: bold;
+        color: inherit;
+        text-rendering: optimizelegibility;
+    }
+    p.uned-paragraph {
+        margin: 0px 0px 10px;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333;
+        font-family: "Verdana";
+    }
+    ul, ol {
+        padding: 0 0 0 40px;
+        margin: 1em 0;
+    }
+    
+    p.uned-h1.index {
+        margin-top: 40px;
+    }
+    p.uned-h2 {
+        font-size: 22px;
+        line-height: 30px;
+        margin: 10px 0px;
+        font-family: "Verdana";
+        font-weight: bold;
+        color: inherit;
+        text-rendering: optimizelegibility;
+    }
+    section.about p.uned-honor {
+        font-family: "Verdana";
+        font-size: 14px;
+    }
+    p+p, ul+p, ol+p {
+        margin-top: 20px;
+    }
+    a.uned {
+        color: #520058 !important;
+        text-decoration: none !important;
+        font-family: "Verdana","Helvetica Neue","Helvetica","Arial","Source Sans","Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif,"Verdana","Helvetica Neue","Helvetica","Arial","Source Sans","Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif,Georgia,Cambria,"Times New Roman",Times,serif;
+        line-height: 1.6em;
+    }
+    li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+    }
+    ul {
+        list-style-type: disc;
+    }
+    li.uned {
+    margin: 0px 0px 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    margin: 10px 0px;
+    font-family: "Verdana";
+    text-rendering: optimizelegibility;
+    }
+    
+    </style>
+
+<main id="main" aria-label="Content" tabindex="-1">
+  <section class="container about tablet-mobile">
+    <p class="uned-h1"><strong>${_("Frequently asked questions about credentials")}</strong></p>
+    <p class="uned-paragraph"><strong>${_("In this section you can find the frequently asked questions about getting credentials in our courses.")}</strong></p>
+    <ol>
+      <li class="uned faq-payments">${_("When you register in a course you have the option of audit the course or pay for the credentials in that moment:")}
+	<ul>
+	  <li class="uned"><strong>${_("Audited:")}</strong> ${(_("You have access to the full content of the course. You won't have a credential until you go the {start_i}Dashboard{end_i} and process the payment.")).format(start_i='<i>', end_i='</i>')|n}</li>
+	  <li class="uned"><strong>${_("Get a credential:")}</strong> ${_("You have acces to the course and to get a credential at the end of the course, as long as you have pass the minimum grade of the course. If you pay and then you don't reach the minimum grade for passing, there is no refund option.")}</li>
+	</ul>
+      </li>
+      <li class="uned faq-payments"><strong>${_("Before requesting the credential:")}</strong>
+	<ul>
+	  <li class="uned">${(_("Check in your profile that your {start_strong}fullname{end_strong} are the right ones. If they're not, modify them in your {start_i}Dashboard{end_i}.")).format(start_strong='<strong>', end_strong='</strong>', start_i='<i>', end_i='</i>')|n}</li>
+	  <li class="uned">${(_("Check in the progress page of your course if you have the {start_strong}minimum passing grade{end_strong} (in \"{start_i}Pass{end_i}\" is shown the percentage of passing). If you pay for the credential and you haven't pass the course, there will be no refund. ")).format(start_strong='<strong>', end_strong='</strong>', start_i='<i>', end_i='</i>')|n}</li>
+	</ul>
+      </li>
+      <li class="uned faq-payments"><strong>${_("What kind of credentials does UNED Abierta offer?")}</strong>
+	${_("UNED Abierta offers, currently, one kind of credentials:")}
+	<ul>
+	  <li class="uned"> <strong>${_("Credential:")}</strong> ${(_("Will be given to those who expressly ask for a recognition after passing the course. This title is given as UNED own and doesn't have the official character established in No. 30 of the Organic Law 4/2007 that modifies the art. 34 of the Organic Law 6/2001 of Universities. In the Credential the details of the Name and Surname of the applicant are indicated; Course title successfully completed, date of issue of the credential and number of hours of the course. It is obtained completely online and its cost will be {start_strong}15 euros{end_strong}.")).format(start_strong='<strong>', end_strong='</strong>')|n}
+	  </li>
+	  <li class="uned">${(_("You can also {start_strong}audit{end_strong} any UNED Abierta course. You will not receive any credential in case of auditing a course.")).format(start_strong='<strong>', end_strong='</strong>')|n}</li>
+	</ul>
+      </li>
+      <li class="uned faq-payments"><strong>${_("What payment methods are available?")}</strong>
+	<p class="uned-paragraph">${_("Currently, UNED Abierta only allows online payment with several types of cards, 4B, VISA and MasterCard.")}</p>
+	<img src="/static/UNED_maple_demo2/images/visa.png" height="50" alt="VISA" />
+	<img src="/static/UNED_maple_demo2/images/mastercard.png" height="50" alt="MasterCard" />
+      </li>
+      <li class="uned faq-payments"><strong>${_("Why should I pay for credentials?")}</strong>
+	<p class="uned-paragraph">${_("If you plan to use the course to find work, advance your career or academic applications, you may prefer an credential for having successfully completed the course. It is also a great way to encourage oneself to complete the course and celebrate success.")}</p>
+	<p class="uned-paragraph">${_("The money you provide when crediting the credential, the UNED devotes it intimately to defray the expenses derived from the start-up and maintenance of these free courses. With what, if in addition to the minimum rate of 15 euros, you want to contribute to UNED Abierta continues to grow, you can do so by choosing to pay more for such credential.")}</p>
+      <li class="uned faq-payments"><strong>${_("I have approved the course! Where can I find my credential?")}</strong>
+	<p class="uned-paragraph">${_("Congratulations!")}</p>
+	<p class="uned-paragraph">${(_("Before requesting credential {start_strong}verify that your Name and Surname data are correct;{end_strong} then, on your {start_strong}Progress page, check that you have obtained the minimum grade{end_strong} to process it:")).format(start_strong='<strong>', end_strong='</strong>')|n}</p>
+	<ul>
+	  <li class="uned">${(_("If you have approved, you can request the credential by clicking on \"{start_i}Yes, I have finished this course{end_i}\" and have 14 days to request the refund as long as the credential has not been generated.")).format(start_i='<i>', end_i='</i>')|n}</li>
+	  <li class="uned">${_("If you have approved and obtained credential, there is no option to refund; see the point Claims and refunds.")}</li>
+	</ul>
+	<p class="uned-paragraph">${(_("Credentials can be processed after users reach the course cut grade (In Progress, the \"{start_i}Pass{end_i}\" line is marked with the percentage of passing the course). Once the payment is made, the credential will be available in the next 24 hours.")).format(start_i='<i>', end_i='</i>')|n}</p>
+	<p class="uned-paragraph">${(_("Once the credential is ready, a link or download button with the text \"{start_i}Download your credential{end_i}\" will appear directly on your {start_i}Dashboard{end_i} at the level of the course. And in addition, you will always have online access to the credential, to be able to verify its veracity.")).format(start_i='<i>', end_i='</i>')|n}</p>
+	<p class="uned-paragraph">${_("Also, in your profile, below your name and surname data you can see the history of your payments.")}</p>
+      </li>
+      <li class="uned faq-payments"><strong>${_("I've paid for the credential but I have not passed the course")}</strong>
+	<p class="uned-paragraph">${_("If you have not approved, but have paid the credential, there is no option to refund; see the point Claims and refunds.")}</p>
+      </li>
+      <li class="uned faq-payments"><strong>${_("What is the deadline to pay for credential?")}</strong>
+	<p class="uned-paragraph">${_("There is no deadline. To pay for credential (if you have obtained the minimum cut grade), please follow these instructions:")}</p>
+	<ul>
+	  <li class="uned">1. ${_("Visit your dashboard.")}</li>
+	  <li class="uned">2. ${_("Click on the button 'Challenge yourself', 'Pay to get credential'.")}</li>
+	  <li class="uned">3. ${_("Choose your contribution to obtain an credential.")}</li>
+	  <li class="uned">4. ${_("Click on Make Payment and follow the instructions to pay by credit card.")}</li>
+	</ul>
+      <li class="uned faq-payments"><strong>${_("When is the credential released?")}</strong>
+	<p class="uned-paragraph">${_("In cases where the course is opened sequentially, or have an end date, the credential will be released when the course is finished.")}</p>
+	<p class="uned-paragraph">${_("In cases where the courses are fully opened from the beginning, so that you can go at your own pace, the credential will be released from the beginning once you have paid for it.")}</p>
+      <li class="uned faq-payments"><strong>${_("Will I get my money back if I change my mind?")}</strong>
+	<p class="uned-paragraph">${_("Once the credential is generated there is no option to refund.")}</p>
+	<p class="uned-paragraph">${_("For the payment of credential, you have up to 14 days after having paid; after this period we can not refund the money, and as long as the credential has not been generated.")}</p>
+	<p class="uned-paragraph">${_("Do you want a refund or have problems with the bill? Contact us Please include the order number you received when you made the payment on all the requests you make to us. Please, do not include your credit card information. See the Claims and refunds section.")}</p>
+      <li class="uned faq-payments"><strong>${_("Claims and refunds")}</strong>
+	<p class="uned-paragraph">${(_("Students must make claims related to UNED Abierta courses, except those related to the qualifications, by writing ({start_anchor}according to model{end_anchor}) submitted to the Vice-Rectorate for Methodology and Innovation or by email attaching the proposed model to {start_email}vrector-metodologia-innovacion@adm.uned.es{end_email}, or through the {start_mailbox}Mailbox of complaints, suggestions and congratulations of the UNED{end_mailbox}.")).format(start_anchor='<a class=\"uned-anchor\" href=\"/../static/UNED_maple_demo2/files/DEVOLUCIONES_UNED_Abierta_VMI.pdf\">', end_anchor='</a>', start_email='<a class=\"uned-anchor\" href=\"mailto:vrector-metodologia-innovacion@adm.uned.es\">', end_email='</a>', start_mailbox='<a class=\"uned-anchor\" href=\"http://portal.uned.es/portal/page?_pageid=93,42790931&_dad=portal&_schema=PORTAL\">', end_mailbox='</a>')|n}</p>
+	<p class="uned-paragraph">${(_("For the Request for the refund of Public Prices will be made by writing ({start_anchor}according to model{end_anchor}) sent by email to {start_email}vrector-metodologia-innovacion@adm.uned.es{end_email}.")).format(start_anchor='<a class=\"uned-anchor\" href=\"/../static/UNED_maple_demo2/files/DEVOLUCIONES_UNED_Abierta_VMI.pdf\">', end_anchor='</a>', start_email='<a class=\"uned-anchor\" href=\"mailto:vrector-metodologia-innovacion@adm.uned.es\">', end_email='</a>')|n}</p>
+	<p class="uned-paragraph">${_("They will not be entitled to a refund:")}</p>
+	<ul>
+	  <li class="uned">${_("When the student, having paid the credential, did not obtain the minimum grade.")}</li>
+	</ul>
+	<p class="uned-paragraph">${_("Refund of public prices")}</p>
+	<p class="uned-paragraph">${_("According to what is established in article 27.5 of Law 8/1989, of April 13, of Public Rates and Prices, they will be entitled to refund:")}</p>
+	<ul>
+	  <li class="uned">${_("When for reasons not attributable to the student that service is not provided.")}</li>
+	  <li class="uned">${_("When the student requests cancellation of payment within the term thereof and provided that the credential has not been issued.")}</li>
+	  <li class="uned">${_("The refund of the amount in these cases, will be requested by writing to the Vice-Rectorate of Methodology and Innovation.")}</li>
+	</ul>
+	<p class="uned-paragraph">${_("Against the Resolution, which exhausts the administrative procedure, a contentious-administrative appeal may be filed with the Contentious-Administrative Chamber of the Superior Court of Justice of Madrid, within a period of two months, counted from the day following the publication of the the Resolution, or, optionally, appeal for reinstatement before Mr. Excellent Rector of the UNED within a period of one month, counting from the day following the publication of the Resolution.")}</p>
+      </li>
+      <li class="uned faq-payments"><strong>${_("Do I have an option for some kind of discount for some concept?")}</strong>
+	<p class="uned-paragraph">${_("Do not; as we are not official teachings, we are not obliged to apply these benefits.")}</p>
+      </li>
+      <li class="uned faq-payments"><strong>${_("What types of courses does UNED Abierta offer?")}</strong>
+	<p class="uned-paragraph">${_("UNED Abierta offers all types of courses, available on the main page:")} <a class="uned-anchor" href="https://iedra.uned.es">https://iedra.uned.es</a></p>
+	<p class="uned-paragraph">${_("All these courses follow the theme of our official website:")} <a class="uned-anchor" href="https://unedabierta.uned.es">https://unedabierta.uned.es</a></p>
+      </li>
+      <li class="uned">
+	<p class="uned-paragraph">${_("UNED, as the owner of the website iedra.uned.es, does not store debit card data. The payment gateway managed by Cybersource uses the necessary methods to guarantee the privacy of the pages by using the secure https protocol.")}</p>
+      </li>
+    </ol>
+  </section>
+</main>

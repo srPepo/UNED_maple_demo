@@ -1,0 +1,186 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Legal Terms")}</%block>
+<style>
+body {
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 1em;
+    background: #f1f1f1;
+}
+
+.container.about, section.about.outside-app, .view-profile .profile-self .wrapper-profile-field-account-privacy .about.u-field-account_privacy, .view-profile .about.wrapper-profile-sections, .view-profile .about.badge-set-display {
+    padding: 20px 30px 120px;
+}
+
+@media (min-width: 768px){}
+.container, section.outside-app, .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .wrapper-profile-sections, .view-profile .badge-set-display {
+    margin: 0 auto;
+    padding: 40px 0;
+    max-width: 1180px;
+    min-width: 760px;
+    width: 100%;
+}
+
+.container, section.outside-app, .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .wrapper-profile-sections, .view-profile .badge-set-display {
+    box-sizing: border-box;
+}
+
+article, aside, details, figcaption, figure, footer, header, nav, section {
+    display: block;
+}
+
+p.uned-h1{
+    font-size: 26px;
+    line-height: 30px;
+    margin: 10px 0px;
+    font-family: "Verdana";
+    font-weight: bold;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+p.uned-paragraph {
+    margin: 0px 0px 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    font-family: "Verdana","Helvetica Neue","Helvetica","Arial","Source Sans","Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+}
+ul, ol {
+    padding: 0 0 0 40px;
+    margin: 1em 0;
+}
+
+p.uned-h1.index {
+    margin-top: 40px;
+}
+p.uned-h2 {
+    font-size: 22px;
+    line-height: 30px;
+    margin: 10px 0px;
+    font-family: "Verdana";
+    font-weight: bold;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+section.about p.uned-honor {
+    font-family: "Verdana";
+    font-size: 14px;
+}
+p+p, ul+p, ol+p {
+    margin-top: 20px;
+}
+a.uned {
+    color: #520058 !important;
+    text-decoration: none !important;
+    font-family: "Verdana","Helvetica Neue","Helvetica","Arial","Source Sans","Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif,"Verdana","Helvetica Neue","Helvetica","Arial","Source Sans","Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif,Georgia,Cambria,"Times New Roman",Times,serif;
+    line-height: 1.6em;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+ul {
+    list-style-type: disc;
+}
+
+</style>
+
+
+<main id="main" aria-label="Content" tabindex="-1">
+  <section class="container about tablet-mobile">
+    <p class="uned-h1"><strong>${_("Legal Terms")}</strong></p>
+    <p class="uned-paragraph">${_("The current legal terms of use of the website of the Community of Undertaking UNED Open edX, hosted by the NATIONAL UNIVERSITY OF DISTANCE EDUCATION (onwards, UNED), entity owner of this web domain (onwards, WEBSITE).")}</p>
+    <p class="uned-paragraph">${_("The structure of this legal advice is reflected in the following index:")}</p>
+    <ul class="uned-tos">
+      <li class="uned"><a class="uned" href="#information">1. ${_("General information")}</a></li>
+      <li class="uned"><a class="uned" href="#purpose">2. ${_("Purpose of the WEBSITE")}</a></li>
+      <li class="uned"><a class="uned" href="#terms">3. ${_("General terms of use of the WEBSITE")}</a></li>
+      <li class="uned"><a class="uned" href="#property">4. ${_("Intellectual and industrial property")}</a></li>
+      <li class="uned"><a class="uned" href="#links">5. ${_("Links")}</a></li>
+      <li class="uned"><a class="uned" href="#exclusion">6. ${_("Exclusion of responsibility")}</a></li>
+      <li class="uned"><a class="uned" href="#protection">7. ${_("Personal data protection and cookies usage")}</a></li>
+      <li class="uned"><a class="uned" href="#modification">8. ${_("Modification of the WEBSITE")}</a></li>
+      <li class="uned"><a class="uned" href="#legislation">9. ${_("Applicable legislation and jurisdiction")}</a></li>
+      <li class="uned"><a class="uned" href="#credentials">10. ${_("Frequently asked questions about credentials and payment methods")}</a></li>
+    </ul>
+    <p class="uned-paragraph">${_("The purpose of this legal advice is to come into effect with all obligations subject to a information society service as the one provided by the WEBSITE, so is to establish the Legal Terms that regulates the access and usage of it.")}</p>
+    <p class="uned-h1 index"><a name="information" id="information"></a><strong>1. ${_("GENERAL INFORMATION")}</strong></p>
+    <p class="uned-h2"> 1.1. ${_("Identifying data")}</p>
+    <p class="uned-paragraph">${_("In compliance with the duty of information established in Article 10 of Law 34/2002, of 11th July, of the Information Society and Electronic Commerce, we inform that UNED is the denomination of National University of Distance Education, owner entity of this website. The UNED's Rector's Office is located on the 38 Bravo Murillo Street, 28015 Madrid.")}</p>
+    <p class="uned-paragraph">${_("The CIF number is Q-2818016-D.")}</p>
+    <p class="uned-paragraph">${_("The contact email of the WEBSITE is:")} uned-abierta@adm.uned.es</p>
+    <p class="uned-h2">1.2. ${_("WEBSITE's ownership")}</p>
+    <p class="uned-paragraph">${_("UNED is the owner of the WEBSITE with EXCLUSIVE RIGTHS and makes this available to Internet Users in order to provide virtual services associated with the UNED Open edX Virtual Community.")}</p>
+    <p class="uned-h1 index"><a name="purpose" id="purpose"></a><strong>2. ${_("PURPOSE OF THE WEBSITE")}</strong></p>
+    <p class="uned-paragraph">${_("The purpose of this web is to work as a virtual meeting point and tool to accomplish with the purposes of the UNED Abierta Open edX Learning Virtual Community. These purposes are the following:")}</p>
+    <p class="uned-paragraph">${_("Technical innovation: Promote innovation and the generation of new technological resources to be applied to the virtual education as a tool to ease the access to professional training and higher education of the future.")}</p>
+    <p class="uned-paragraph">${_("Methodological Innovation: Study and experimentation of new methodologies and disruptive pedagogical strategies that make possible the use of technology and the internet (innovative uses of e-Learning platforms, peer learning, social learning, self-taught learning, mass learning ...). Open innovation in educational resources and processes: Explore innovative possibilities and initiatives in the use of open repositories of educational contents and new forms of open accreditation and certification that allow to form in a more flexible, modular and agile way, the new professional profiles that demand the new digital environment.")}</p>
+    <p class="uned-paragraph">${_("Empowerment of online permanent training as an educational model with enormous potential to respond to the formation of new professional profiles that demand the new labor market. Through this online permanent training strategy you can train and accredit skills and competences not currently recognized or certifiable but of interest to the demanding agents of new professionals who need profiles adapted to the new Digital Economy. Promote Entrepreneurship based on Knowledge: Empowerment of training, interaction and launch of new entrepreneurship initiatives within the possibilities offered by the digital world.")}</p>
+    <p class="uned-h1 index"><a name="terms" id="terms"></a><strong>3. ${_("GENERAL TERMS OF USE OF THE WEBSITE")}</strong></p>
+    <p class="uned-h2"> 3.1 ${_("General policy")}</p>
+    <p class="uned-paragraph">${_("Any person accessing the WEBSITE must read the General Conditions in force at the time of access, and must refrain from using the WEBSITE if they are not fully satisfied with its content. The mere use of the WEBSITE attributes the condition of User (\"User\") and implies full acceptance and adhesion without reservation to these General Conditions. These conditions are intended to regulate and inform the User about the proper use of the WEBSITE. Therefore you should read them carefully and respect their compliance.")}</p>
+    <p class="uned-paragraph">${_("The mere access of a User to the WEBSITE does not imply registration or the obligation to provide personal data. This obligation will only take place if the interested party wishes to register as a New User to carry out a specific action that does require such contribution. For example, it is understood as the contribution of a personal data, the email address.")}</p>
+    <p class="uned-paragraph">${_("The User will be responsible for providing truthful and lawful data, at the same time as he will be responsible for the proper use of the WEBSITE.")}</p>
+    <p class="uned-paragraph">${_("Likewise, and regarding the content, the User declares to assume responsibility for the contents, opinions or links that it incorporates in the Forums and its exclusive authorship, guaranteeing that they do not violate the rights of privacy, privacy, image, intellectual property or industrial, that correspond to third parties. Under no circumstances, UNED, is responsible for the opinions expressed or links published in the forums or the consequences derived from them. UNED reserves the right to withdraw content, opinions or links that violate the provisions of these conditions.")}</p>
+    <p class="uned-paragraph">${_("UNED is not responsible for the interruption of any service or access to our website without prior notice, whether for security reasons, technical, maintenance or caused by a third party.")}</p>
+    <p class="uned-paragraph">${_("UNED reserves the right to modify these conditions of use as well as the particular conditions that may be included. The Users will be able to know any modification in said conditions through the publication that UNED will make in its WEBSITE.")}</p>
+    <p class="uned-h2">3.2 ${_("Free access and use of the WEBSITE")}</p>
+    <p class="uned-paragraph">${_("The provision of the Services, by UNED, is free for Users.")}</p>
+    <p class="uned-h2">3.3 ${_("Veracity of the information")}</p>
+    <p class="uned-paragraph">${_("All information that is provided by the User through the Services must be authentic and truthful. In particular, this will be applicable to the email address that the User transmits to UNED. In any case, the User will be solely responsible for the false or inaccurate statements made and the damages caused to UNED or third parties for the information provided.")}</p>
+    <p class="uned-h2">3.4 ${_("Minors")}</p>
+    <p class="uned-paragraph">${_("Only minors who have previously obtained permission from their parents, guardians, or legal representatives, who will be responsible for all acts performed by minors in their charge, may make use of the Services.")}</p>
+    <p class="uned-h1 index"><a name="property" id="property"></a><strong>4. ${_("INTELLECTUAL AND INDUSTRIAL PROPERTY")}</strong></p>
+    <p class="uned-paragraph">${_("THE WEBSITE and the different elements and contents that make it up, such as photographs, graphic designs, trademarks, logos and other distinctive signs, texts, videos or software, as well as any others susceptible to protection, are subject to intellectual property rights and of which it is the exclusive holder or UNED assignee with the required scope, or a third party, not implying assignment or transmission in favor of the User of any intellectual or industrial property right over the WEBSITE or any of its component elements.")}</p>
+    <p class="uned-paragraph">${_("Acts of reproduction, distribution, transformation, public communication, making available, extraction, reuse, resubmission or exploitation by any means or procedure of the WEBSITE or its constituent elements are expressly forbidden to the User, except in cases where it is permitted by law or with the express and written authorization of UNED.")}</p>
+    <p class="uned-paragraph">${_("The User may view and obtain a temporary private copy of the contents available through the WEBSITE for their exclusive personal and private use in their computer systems, provided it is not for the purpose of developing activities of a commercial or professional nature. The User must refrain from circumventing or attempting to circumvent any technological measures adopted by UNED to restrict acts that do not have their authorization or that of third parties holders of rights over trademarks or other distinctive signs, works or protected features accessible through the WEBSITE . The User is obliged to respect in all cases all the intellectual and industrial property rights on the WEBSITE, whether they are owned by UNED or by third parties.")}</p>
+    <p class="uned-paragraph">${_("UNED will not be responsible for any illicit or unauthorized use that the User may make.")}</p>
+    <p class="uned-h1 index"><a name="links" id="links"></a><strong>5. ${_("LINKS")}</strong></p>
+    <p class="uned-h2">5.1 ${_("Links from other websites to UNED. Hyperlinks.")}</p>
+    <p class="uned-paragraph">${_("Any User that intends to establish a hyperlink between their website and the WEBSITE (hereinafter referred to as a Hyperlink) must comply with the terms established in these conditions of use. The inclusion of a Hyperlink under terms other than those listed below will require the prior written acceptance of UNED.")}</p>
+    <p class="uned-paragraph">${_("UNED authorizes only the Hyperlink that allows the redirection to the WEB SITE, but in no case will it imply the total or partial reproduction of the WEBSITE.")}</p>
+    <p class="uned-paragraph">${_("The User may not reproduce or imitate on its website all or part of the WEBSITE, in particular may not reproduce or imitate the form of presentation or provision of the contents of the WEBSITE in such a way that it may generate a risk of association or confusion between the WEBSITE and the User's website.")}</p>
+    <p class="uned-paragraph">${_("The fact that the audiovisual materials of UNED MOOC have been hosted by the University on YouTube or another multimedia channel does not allow users to make any use of them.")}</p>
+    <p class="uned-paragraph">${_("The use of frames or frames as well as assembled or deep links to the WEBSITE that generate confusion and that may attribute the ownership of contents to a different UNED entity is prohibited, nor is authorization granted to create an environment or navigation bar on the contents of the WEBSITE.")}</p>
+    <p class="uned-paragraph">${_("The links from other websites to this website are authorized with the aim of disseminating the activities of this project and promoting participation in it.")}</p>
+    <p class="uned-paragraph">${_("The declaration or direct or indirect suggestion of the existence of a collaboration relationship, joint venture or business association of any kind between the website or company of the User with UNED is prohibited. In this regard, the User shall refrain from presenting the contents made available on the website where the Hyperlink is incorporated, as authorized, approved or supervised content by UNED.")}</p>
+    <p class="uned-paragraph">${_("The Web page in which the Hyperlink is established may not contain any distinctive sign, including denominations, logos or slogans, that identify UNED, except for those denominations that are part of the link itself.")}</p>
+    <p class="uned-paragraph">${_("The Web page in which the Hyperlink is established will not contain illegal information or content, contrary to morals, generally accepted good customs and public order, nor will it contain contents that are contrary to any third party rights.")}</p>
+    <p class="uned-paragraph">${_("In any case, UNED reserves the right to prohibit or disable, at its discretion, at any time, any Hyperlink to the WEBSITE. The User will be obliged to modify or immediately remove from its website any Hyperlink, content or distinctive sign owned by UNED if so required.")}</p>
+    <p class="uned-h1 index"><a name="exclusion" id="exclusion"></a><strong>6. ${_("EXCLUSION OF RESPONSIBILITY")}</strong></p>
+    <p class="uned-paragraph">${_("UNED does not guarantee the availability and continuity of the functioning of the WEBSITE and the Services, without prejudice to the fact that, whenever possible, UNED warns previously of the interruptions in the operation of the Website and the Services.")}</p>
+    <p class="uned-paragraph">${_("All responsibility of UNED is excluded with all the extension contemplated in the legislation in force, with respect to any responsibility for damages of any nature that can be attributed to the lack of availability or continuity of the Website, to the fraud of the utility that the Users may have attributed to the Website and the services, the fallibility thereof, and especially, although not exclusively, to failures in accessing the different web pages of the Site or those from which the services are provided.")}</p>
+    <p class="uned-h2">6.1. ${_("Privacy and security in the use of the WEBSITE and the Services")}</p>
+    <p class="uned-paragraph">${_("The website uses information security techniques generally accepted in the industry, such as a secure connection layer, firewalls, access control procedures and cryptographic mechanisms, all with the aim of preventing unauthorized data access. To achieve these purposes, the user / client accepts that the provider obtains data for the purpose of the corresponding authentication of the access controls.")}</p>
+    <p class="uned-h2">6.2. ${_("Exclusion of guarantees and responsibility of UNED in this website.")}</p>
+    <p class="uned-paragraph">${_("UNED does not control or guarantee the absence of viruses or other elements in the Content that may cause alterations in your computer system (software and hardware) or in electronic documents and files stored in your computer system.")}</p>
+    <p class="uned-paragraph">${_("Any responsibility of UNED for damages of any nature that may be due to the presence of viruses or the presence of other elements in the contents that may cause alterations in the computer system is excluded, to the fullest extent permitted by current legislation. , electronic documents or files of the Users.")}</p>
+    <p class="uned-h1 index"><a name="protection" id="protection"></a><strong>7. ${_("PERSONAL DATA PROTECTION AND COOKIES USAGE")}</strong></p>
+    <p class="uned-honor">${_("In accordance with the provisions of the General Regulation UE 679/2016 of Data Protection and current legislation, we inform you that the data provided in this document will be treated, as Responsible for the treatment, by the NATIONAL UNIVERSITY OF DISTANCE EDUCATION.")}</p>
+    <p class="uned-honor">${_("The purpose of data processing is to manage the User's participation in the UNED Abierta website, as well as to keep the User informed about the news of UNED and UNED Abierta.")}</p>
+    <p class="uned-honor">${_("The UNED will process your personal data in accordance with the legitimation basis of which the interested party will be duly informed in each situation:")}</p>
+    <ol class="uned list-disc">
+      <li class="uned">${_("The consent of the interested party.")}</li>
+      <li class="uned">${_("The execution of the public education service provided by the University.")}</li>
+      <li class="uned">${_("The execution of a contract in which the interested party is a party or for the application at the request of this of the pre-contractual measures.")}</li>
+      <li class="uned">${_("In access control or video surveillance treatments, the legal basis will be the legitimate interest pursued by the UNED.")}</li>
+    </ol>
+    <p class="uned-honor">${_("Likewise, the data will be used to send information, by any means, about the purposes described above.")}</p>
+    <p class="uned-honor">${_("Your data will not be transferred or communicated to third parties, except in the cases necessary for the due attention, development, control and fulfillment of the purposes expressed, as well as in the cases foreseen, according to the Law.")}</p>
+    <p class="uned-honor">${(_("You will be able to exercise the {start_strong}rights{end_strong} of Access, Rectification, Deletion, Limitation of the treatment, Portability of the data or Opposition to the treatment before the UNED, Bravo Murillo Street 38, Data Protection Section, 28015 of Madrid, or in any of the offices that You can find here, along with additional information and the form: {start_anchor_policy}Department of Legal Policy on Information Security{end_anchor_policy}, ({start_anchor_dpj}www.uned.es/dpj{end_anchor_dpj}) or through the {start_anchor_uned}Electronic Office{end_anchor_uned} ({start_anchor_uned}https://sede.uned.es{end_anchor_uned}) of the UNED.")).format(start_strong='<strong>', end_strong='</strong>', start_anchor_policy='<a target=\"_blank\" class=\"uned-anchor\" href=\"http://portal.uned.es/portal/page?_pageid=93,24432769,93_24432770&_dad=portal&_schema=PORTAL\">', end_anchor_policy='</a>', start_anchor_dpj='<a target=\"_blank\" class=\"uned-anchor\" href=\"https://www.uned.es/dpj\">', end_anchor_dpj='</a>', start_anchor_uned='<a target=\"_blank\" class=\"uned-anchor\" href=\"https://sede.uned.es/\">', end_anchor_uned='</a>')|n}</p>
+    <p class="uned-honor"><i>${(_("For more information visit our {start_anchor_privacy}Privacy Policy{end_anchor_privacy}.")).format(start_anchor_privacy='<a target=\"_blank\" class=\"uned-anchor\" href=\"https://descargas.uned.es/publico/pdf/Politica_privacidad_UNED.pdf\">',end_anchor_privacy='</a>')|n}</i></p>
+    <p class="uned-h1 index"><a name="modification" id="modification"></a><strong>8. ${_("MODIFICATION OF THE WEBSITE")}</strong></p>
+    <p class="uned-paragraph">${_("UNED reserves the right and the ability to renew, modify or transform the WEBSITE and the elements contained therein without the need to communicate it in advance to the Users.")}</p>
+    <p class="uned-h1 index"><a name="legislation" id="legislation"></a><strong>9. ${_("APPLICABLE LEGISLATION AND JURISDICTION")}</strong></p>
+    <p class="uned-paragraph">${_("The general and specific conditions of use of the WEBSITE, as well as the relations established between UNED and the User will be governed by the current Spanish legislation.")}</p>
+    <p class="uned-paragraph">${_("Any dispute that may arise between UNED and the User will be submitted to the Courts and Tribunals of Madrid, expressly waiving any other jurisdiction that may correspond to them.")}</p>
+    <p class="uned-paragraph">${(_("The infringement of intellectual property rights can be constitutive of a crime, if mediare profit motive, according to our Criminal Code, approved by Organic Law 10/1995, of November 23 (BOE of 24) with its subsequent amendments, which provides that \"{start_em}shall be punished by imprisonment from six months to two years and a fine of 12 to 24 months who, for profit and to the detriment of a third party, reproduces, plagiarizes, distributes or publicly communicates, in whole or in part, a work literary, artistic scientific, or its transformation, interpretation or artistic execution fixed on any type of medium or communicated through any means, without the authorization of the holders of the corresponding intellectual property rights or of their assignees{end_em}\" (Article 270.1).")).format(start_em='<em>', end_em='</em>')|n}</p>
+    <p class="uned-paragraph">${_("And in any case, even if not for profit, these facts can be prosecuted by the civil jurisdiction under the Revised Text of the Intellectual Property Law (hereinafter, LPI) approved by Royal Legislative Decree 1/1996, of 12 April ( BOE of 22) that recognizes authors, among other rights, that of \"deciding if and how their work should be disclosed\" (article 12.1); and to publishers \"the right to reproduce their work and distribute it\" (article 58); entrusting the safeguarding of said rights to the Judges and Civil Courts (Article 137).")}</p>
+    <p class="uned-h1 index"><a name="credentials" id="credentials"></a><strong>10. ${_("FREQUENTLY ASKED QUESTIONS ABOUT CREDENTIALS AND PAYMENT METHODS")}</strong></p>
+    <p class="uned-paragraph">${((_("Access the {start_anchor}FAQ section on credentials and payment methods{end_anchor}.")).format(start_anchor='<a class=\"uned-anchor\" href=\"{verified_url}\">', end_anchor='</a>')).format(verified_url=marketing_link('WHAT_IS_VERIFIED_CERT'))|n}<p/>
+  </section>
+</main>

@@ -1,0 +1,86 @@
+//Main BG Color Variables
+$main-bg: #f1f1f1;
+$main-bg-60: lighten($main-bg, 18.5%); //Main Border/HR Color
+
+//Secondary Color Variables
+$secondary: #b5a4b7;
+$secondary-25: lighten($secondary, 20%); //Important Heading BG Color 
+
+//FOOTER MARGIN
+$baseline: 20px !default;
+
+$header-bg: transparentize(lighten($secondary, 18.5%), .25);
+$gray-1: #f1f1f1; //Main BG Color
+
+//Footer
+$footer-bg: $secondary-25;
+$courseware-footer-border: 1px solid $main-bg-60;
+$courseware-footer-shadow: box-shadow(2px 1px 0 rgba(0, 0, 0, .1));
+$courseware-footer-margin: 50px;
+$footer_margin: ($baseline/4) 0;
+
+.wrapper-footer .nav-colophon ol {
+    margin-left: 0px;
+}
+
+//Header
+body.discussion {
+    background-color: $gray-1!important;
+    header.global.slim {
+        background-color: $header-bg;
+        border-bottom-color: #fff;
+        h1.logo {
+            &:before {
+                background-image: -webkit-linear-gradient(#fff 0%, #fff);
+            }
+        }
+    }
+    ol.user {
+        list-style: none;
+	float: right;
+	margin-left: 5px;
+	margin-right: 5px;
+	li select.language-selector {
+	    width: 120px;
+        }
+    }
+}
+
+.nav-global {
+     display: none;
+}
+
+.dropdown-menu-container .menu-title {
+    background-color: rgb(233,233,233);
+    box-shadow: rgba(255, 255, 255, 0.6) 0px 1px 0px 0px;
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -4px;
+    padding-right: 8px;
+}
+.dropdown-menu-container .menu-title:hover {
+    text-decoration: none;
+    color: #065683;
+    background: #f1f1f1;
+}
+.dropdown-menu-container .menu-button {
+    margin-top: 0px;
+    background-color: rgb(241, 241, 241);
+    padding-bottom: 34px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 8px;
+}
+
+.course-header{
+    width: auto;
+    max-width: 45%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: "Source Sans",sans-serif;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: rgb(100, 100, 100);
+    text-shadow: rgb(255, 255, 255) 0px 1px 0px;
+}

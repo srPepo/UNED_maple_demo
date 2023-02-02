@@ -1,0 +1,131 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Honor Code")}</%block>
+
+<style>
+    body {
+        font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 1rem;
+        font-style: normal;
+        line-height: 1em;
+        background: #f1f1f1;
+    }
+    
+    .container.about, section.about.outside-app, .view-profile .profile-self .wrapper-profile-field-account-privacy .about.u-field-account_privacy, .view-profile .about.wrapper-profile-sections, .view-profile .about.badge-set-display {
+        padding: 20px 30px 120px;
+    }
+    
+    @media (min-width: 768px){}
+    .container, section.outside-app, .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .wrapper-profile-sections, .view-profile .badge-set-display {
+        margin: 0 auto;
+        padding: 40px 0;
+        max-width: 1180px;
+        min-width: 760px;
+        width: 100%;
+    }
+    
+    .container, section.outside-app, .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .wrapper-profile-sections, .view-profile .badge-set-display {
+        box-sizing: border-box;
+    }
+    
+    article, aside, details, figcaption, figure, footer, header, nav, section {
+        display: block;
+    }
+    
+    p.uned-h1{
+        font-size: 26px;
+        line-height: 30px;
+        margin: 10px 0px;
+        font-family: "Verdana";
+        font-weight: bold;
+        color: inherit;
+        text-rendering: optimizelegibility;
+    }
+    p.uned-paragraph {
+        margin: 0px 0px 10px;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333;
+        font-family: "Verdana","Helvetica Neue","Helvetica","Arial","Source Sans","Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+    }
+    ul, ol {
+        padding: 0 0 0 40px;
+        margin: 1em 0;
+    }
+    
+    p.uned-h1.index {
+        margin-top: 40px;
+    }
+    p.uned-h2 {
+        font-size: 22px;
+        line-height: 30px;
+        margin: 10px 0px;
+        font-family: "Verdana";
+        font-weight: bold;
+        color: inherit;
+        text-rendering: optimizelegibility;
+    }
+    section.about p.uned-honor {
+        font-family: "Verdana";
+        font-size: 14px;
+    }
+    p+p, ul+p, ol+p {
+        margin-top: 20px;
+    }
+    a.uned {
+        color: #520058 !important;
+        text-decoration: none !important;
+        font-family: "Verdana","Helvetica Neue","Helvetica","Arial","Source Sans","Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif,"Verdana","Helvetica Neue","Helvetica","Arial","Source Sans","Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif,Georgia,Cambria,"Times New Roman",Times,serif;
+        line-height: 1.6em;
+    }
+    li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+    }
+    ul {
+        list-style-type: disc;
+    }
+    li.uned {
+    margin: 0px 0px 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    margin: 10px 0px;
+    font-family: "Verdana";
+    text-rendering: optimizelegibility;
+    }
+    
+    </style>
+
+<main id="main" aria-label="Content" tabindex="-1">
+  <section class="container about tablet-mobile">
+    <p class="uned-h1"><strong>${_("Honor Code")}</strong></p>
+    <p class="uned-honor">${_("All registered students in the platform certify that they will follow the below honor code:")}</p>
+    <ol class="uned">
+      <li class="uned">${_("I will register using only one account and I will not allow that anybody else use my username and/or password. I will not create a fake profile account neither I will impersonate third-party identities.")}</li>
+      <li class="uned">${_("My answers to the activities and exams will be the result of my effort as student of each course I do, except those cases where collaboration is allowed.")}</li>
+      <li class="uned">${_("I will not share with anybody the answers to the problems, tests, exams and/or any other kind of courses activity (neither the ones created by me, neither the official answers I may have access to).")}</li>
+      <li class="uned">${_("My involvement in the discussion page it will be respectful and I will not write defamatory or threatening comments; neither including ilegal activities neither encourage others to commit those activities; neither infringe intellectual property rights of others, including, but not limited to author rights, trademarks or business secrets; neither it will include obscene language or media content; that can hurt in any sense to other users or visitors; neither that violates current local, autonomous government, national or internationl application legislation; neither attack the vulnerability of any system or network; neither break nor avoid security measures; neither interfere nor concern any user, server or network, for example, by sending a virus, spam, spam messages to any other user, to the platform, services, or courses content.")}</li>
+      <li class="uned">${(_("The access to these courses, as in the discussion involvement, is ruled by the same general etiquette regulations of the UNED and the {start_anchor}Forum access regulations{end_anchor}.")).format(start_anchor='<a target=\"_blank\" class=\"uned-anchor\" href=\"http://portal.uned.es/pls/portal/docs/PAGE/UNED_MAIN/LAUNIVERSIDAD/VICERRECTORADOS/SECRETARIA/NORMATIVA_OLD/NORMATIVA%20GENERAL%20UNED/REGLAMENTO%20FOROS.PDF\">', end_anchor='</a>')|n}</li>
+    </ol>
+    <p class="uned-honor">${_("UNED Abierta does not monitor the content published by the users, but reserves the right to remove forbidden content aware of, even not being in the obligation of doing it.")}</p>
+    <p class="uned-honor">${_("This honor code can be checked and reviewed at any momento under the UNED Abierta criterion.")}</p>
+    <p class="uned-honor">${_("All made changes will be become effective at the moment of publication, which implies that the user accepts the modifications done by accessing the platform and he will be able to consult in this section.")}</p>
+    <p class="uned-h1"><strong>${_("INFORMATIVE CLAUSE")}</strong></p>
+    <p class="uned-honor">${_("In accordance with the provisions of the General Regulation UE 679/2016 of Data Protection and current legislation, we inform you that the data provided in this document will be treated, as Responsible for the treatment, by the NATIONAL UNIVERSITY OF DISTANCE EDUCATION.")}</p>
+    <p class="uned-honor">${_("The purpose of data processing is to manage the User's participation in the UNED Abierta website, as well as to keep the User informed about the news of UNED and UNED Abierta.")}</p>
+    <p class="uned-honor">${_("The UNED will process your personal data in accordance with the legitimation basis of which the interested party will be duly informed in each situation:")}</p>
+    <ol class="uned list-disc">
+      <li class="uned">${_("The consent of the interested party.")}</li>
+      <li class="uned">${_("The execution of the public education service provided by the University.")}</li>
+      <li class="uned">${_("The execution of a contract in which the interested party is a party or for the application at the request of this of the pre-contractual measures.")}</li>
+      <li class="uned">${_("In access control or video surveillance treatments, the legal basis will be the legitimate interest pursued by the UNED.")}</li>
+    </ol>
+    <p class="uned-honor">${_("Likewise, the data will be used to send information, by any means, about the purposes described above.")}</p>
+    <p class="uned-honor">${_("Your data will not be transferred or communicated to third parties, except in the cases necessary for the due attention, development, control and fulfillment of the purposes expressed, as well as in the cases foreseen, according to the Law.")}</p>
+    <p class="uned-honor">${(_("You will be able to exercise the {start_strong}rights{end_strong} of Access, Rectification, Deletion, Limitation of the treatment, Portability of the data or Opposition to the treatment before the UNED, Bravo Murillo Street 38, Data Protection Section, 28015 of Madrid, or in any of the offices that You can find here, along with additional information and the form: {start_anchor_policy}Department of Legal Policy on Information Security{end_anchor_policy}, ({start_anchor_dpj}www.uned.es/dpj{end_anchor_dpj}) or through the {start_anchor_uned}Electronic Office{end_anchor_uned} ({start_anchor_uned}https://sede.uned.es{end_anchor_uned}) of the UNED.")).format(start_strong='<strong>', end_strong='</strong>', start_anchor_policy='<a target=\"_blank\" class=\"uned-anchor\" href=\"http://portal.uned.es/portal/page?_pageid=93,24432769,93_24432770&_dad=portal&_schema=PORTAL\">', end_anchor_policy='</a>', start_anchor_dpj='<a target=\"_blank\" class=\"uned-anchor\" href=\"https://www.uned.es/dpj\">', end_anchor_dpj='</a>', start_anchor_uned='<a target=\"_blank\" class=\"uned-anchor\" href=\"https://sede.uned.es/\">', end_anchor_uned='</a>')|n}</p>
+    <p class="uned-honor"><i>${(_("For more information visit our {start_anchor_privacy}Privacy Policy{end_anchor_privacy}.")).format(start_anchor_privacy='<a target=\"_blank\" class=\"uned-anchor\" href=\"https://descargas.uned.es/publico/pdf/Politica_privacidad_UNED.pdf\">',end_anchor_privacy='</a>')|n}</i></p>
+  </section>
+</main>

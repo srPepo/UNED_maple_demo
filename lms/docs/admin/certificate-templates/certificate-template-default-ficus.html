@@ -1,0 +1,290 @@
+<%namespace name='static' file='/static_content.html'/>
+<%!
+   from django.utils.translation import ugettext as _
+   from django.template.defaultfilters import escapejs
+   %>
+<%
+   # set doc language direction
+   from django.utils.translation import get_language_bidi
+   dir_rtl = 'rtl' if get_language_bidi() else 'ltr'
+   course_mode_class = course_mode if course_mode else ''
+   %>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head dir="${dir_rtl}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>${document_title}</title>
+    <%static:css group='style-certificates'/>
+  </head>
+  <body class="layout-accomplishment view-valid-accomplishment ${dir_rtl} certificate certificate-${course_mode_class}" data-view="valid-accomplishment">
+    <div class="wrapper-view" dir="${dir_rtl}">
+      <div class="wrapper-header">
+        <header class="header-app" role="banner">
+          <h1 class="header-app-title">
+            <a class="logo" href="${logo_url}">
+              <img class="logo-img" src="${logo_src}" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
+            </a>
+            <span class="sr-only">${logo_subtitle}</span>
+          </h1>
+        </header>
+      </div>
+      <hr class="divider sr-only">
+      % if user.is_authenticated() and user.id == int(accomplishment_user_id):
+      <%block name="js_extra">
+      <%static:js group='certificates_wv'/>
+      <script type="text/javascript">
+        $(document).ready(function() {
+        FaceBook.init({"facebook_app_id": '${facebook_app_id}'});
+        $.ajaxSetup({
+        headers: {
+        'X-CSRFToken': $.cookie('csrftoken')
+        },
+        dataType: 'json'
+        });
+        $(".action-linkedin-profile").click(function() {
+        var data = {
+        user_id: '${accomplishment_user_id}',
+        course_id: $(this).data('course-id'),
+        enrollment_mode: $(this).data('certificate-mode'),
+        certificate_id: '${certificate_id_number}',
+        certificate_url: window.location.href,
+        social_network: 'LinkedIn'
+        };
+        Logger.log('edx.certificate.shared', data);
+        window.open('${linked_in_url}');
+        });
+        });
+
+        function popupWindow(url, title, width, height) {
+        // popup a window at center of the screen.
+        var left = (screen.width/2)-(width/2);
+        var top = (screen.height/2)-(height/2);
+        return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width='+width+', height='+height+', top='+top+', left='+left);
+        }
+      </script>
+</%block>
+<div id="fb-root"></div>
+<div class="wrapper-banner wrapper-banner-user">
+  <section class="banner banner-user">
+    <div class="message message-block message-notice">
+      <h2 class="message-title hd-5 emphasized">${accomplishment_banner_opening | h}</h2>
+      <div class="wrapper-copy-and-actions">
+        <p class="message-copy copy copy-base emphasized">${accomplishment_banner_congrats}</p>
+        <div class="message-actions">
+          <h3 class="sr-only">${_("Print or share your certificate:")}</h3>
+          % if facebook_share_enabled:
+          <button class="action action-share-facebook btn-inverse btn-small icon-only" id="action-share-facebook"
+                  onclick="FaceBook.share({
+                           share_text: '${facebook_share_text | escapejs}',
+                           share_link: '${share_url}',
+                           picture_link: '${full_course_image_url}',
+                           description: '${_("Click the link to see my certificate.") | escapejs}'
+                           });">
+            <span class="icon fa fa-facebook-official" aria-hidden="true"></span>
+            <span class="action-label">${_("Post on Facebook")}</span>
+          </button>
+          %endif
+          % if twitter_share_enabled:
+          <button data-tooltip="${_('Share on Twitter')}"
+                  class="action action-share-twitter btn-inverse btn-small icon-only"
+                  title="${_('Share on Twitter')}"
+                  onclick="popupWindow('${twitter_url}', 'tweetWindow', 640, 480); return false;">
+            <span class="icon fa fa-twitter" aria-hidden="true"></span>
+            <span class="action-label">${_("Tweet this Accomplishment. Pop up window.")}</span>
+          </button>
+          %endif
+          %if linked_in_url:
+          <button class="action action-linkedin-profile btn-inverse btn-small icon-only" id="action-share-linkedin" title="${_('Add to LinkedIn Profile')}" data-course-id="${course_id}" data-certificate-mode="${course_mode}">
+            <span class="icon fa fa-linkedin" aria-hidden="true"></span>
+            <span class="action-label">${_("Add to LinkedIn Profile")}</span>
+          </button>
+          %endif
+          %if badge:
+          <button class="action action-share-mozillaopenbadges btn btn-overlay btn-small">
+            <img class="icon icon-mozillaopenbadges" src="/static/certificates/images/ico-mozillaopenbadges.png" alt="Mozilla Open Badges Backpack">
+            ${_("Add to Mozilla Backpack")}
+          </button>
+          %endif
+          <button class="action action-print btn-inverse btn-small" id="action-print-view">
+            <span class="icon fa fa-print" aria-hidden="true"></span>
+            ${_("Print Certificate")}
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+% endif
+<div class="wrapper-introduction">
+  <section class="introduction">
+    <h2 class="introduction-copy hd-2 emphasized">
+      ${document_banner}
+    </h2>
+  </section>
+</div>
+<main class="accomplishment accomplishment-main">
+  <div class="wrapper-accomplishment-rendering">
+    <div class="accomplishment-rendering">
+      <span class="deco-corner deco-corner-tl"></span>
+      <span class="deco-corner deco-corner-tr"></span>
+      <span class="deco-corner deco-corner-bl"></span>
+      <span class="deco-corner deco-corner-br"></span>
+      <div class="accomplishment-type">
+        <span class="accomplishment-type-symbol">
+          <img class="src" src="/static/certificates/images/ico-${course_mode_class}.png" alt="">
+        </span>
+        <span class="accomplishment-type-label hd-4">${document_title}</span>
+      </div>
+      <div class="wrapper-statement-and-signatories">
+        <div class="accomplishment-statement">
+          <p class="accomplishment-statement-lead">
+            <strong class="accomplishment-recipient hd-1 emphasized">${accomplishment_copy_name | h}</strong>
+            <span class="accomplishment-summary copy copy-lead">${accomplishment_copy_description_full}</span>
+            <span class="accomplishment-course hd-1 emphasized">
+              <span class="accomplishment-course-org">${accomplishment_copy_course_org}  </span>
+              <span class="accomplishment-course-number">${course_number}</span>:
+              <span class="accomplishment-course-name">${accomplishment_copy_course_name}</span>
+            </span>
+          </p>
+          <p class="accomplishment-statement-detail copy copy-lead">${accomplishment_copy_course_description}</p>
+        </div>
+        % if mode != 'base':
+        <div class="accomplishment-signatories">
+          <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
+          <div class="wrapper-signatories">
+            <div class="list-signatories">
+              % if certificate_data:
+              % for signatory in certificate_data.get('signatories', []):
+              <div class="signatory">
+                <img class="signatory-signature" src="${static.url(signatory['signature_image_path'])}" alt="${signatory['name']}">
+                <h4 class="signatory-name hd-5">${signatory['name']}</h4>
+                <p class="signatory-credentials copy copy-micro">
+                  <span class="role">${signatory['title']}</span>
+                  <span class="organization">${signatory['organization']}</span>
+                </p>
+              </div>
+              % endfor
+              % endif
+            </div>
+          </div>
+        </div>
+        % endif
+      </div>
+      <div class="accomplishment-orgs">
+        <h3 class="accomplishment-orgs-title sr-only">${_("Supported by the following organizations")}</h3>
+        <ul class="wrapper-orgs list-orgs">
+          <li class="wrapper-organization">
+            <div class="organization organization-edX">
+              <img class="organization-logo" src="${logo_src}" alt="${platform_name}">
+            </div>
+          </li>
+          % if organization_logo:
+          <li class="wrapper-organization">
+            <div class="organization">
+              <img class="organization-logo" src="${organization_logo.url}" alt="${platform_name}">
+            </div>
+          </li>
+          % endif
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper-accomplishment-metadata">
+    <div class="accomplishment-metadata">
+      <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about | h}</h2>
+      <div class="wrapper-metadata">
+        <dl class="metadata accomplishment-recipient">
+          <dt class="label sr-only">Awarded to:</dt>
+          <dd class="value copy copy-meta">
+            <span class="recipient-img">
+              <img class="src" src="/static/certificates/images/demo-user-profile.png" alt="">
+            </span>
+            <div class="recipient-details">
+              <h3 class="recipient-name">${accomplishment_copy_name | h}</h3>
+              <p class="recipient-username">${accomplishment_copy_username} @ ${platform_name}</p>
+            </div>
+          </dd>
+        </dl>
+        <dl class="metadata accomplishment-id">
+          <dt class="label copy copy-meta">${certificate_id_number_title}:</dt>
+          <dd class="value copy copy-base">${certificate_id_number}</dd>
+        </dl>
+        <dl class="metadata accomplishment-date">
+          <dt class="label copy copy-meta">${certificate_date_issued_title}</dt>
+          <dd class="value copy copy-base">${certificate_date_issued}</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</main>
+<div class="wrapper-about">
+  <aside role="complementary" class="about" aria-label="About edX Certificates">
+    <section class="about-item about-edx">
+      <h2 class="about-edx-title hd-4">${company_about_title}</h2>
+      <div class="about-edx-copy copy copy-meta">
+        <p>${company_about_description}</p>
+        <a class="action" href="${company_about_url}">${company_about_urltext}</a>
+      </div>
+    </section>
+    <section class="about-item about-accomplishments">
+      <h2 class="about-title hd-4">${accomplishment_copy_about}</h2>
+      <div class="about-copy copy copy-meta">
+        <p>${certificate_info_description}</p>
+      </div>
+    </section>
+  </aside>
+</div>
+<hr class="divider sr-only">
+<div class="wrapper-footer">
+  <footer class="footer-app" role="contentinfo" id="company-info">
+    <div class="footer-app-copyright">
+      <p class="copy copy-micro">${copyright_text}</p>
+    </div>
+    <nav class="footer-app-nav">
+      <ul class="list list-legal">
+        <li class="nav-item">
+          <a class="action btn btn-small btn-link" href="${company_tos_url}">${company_tos_urltext}</a>
+        </li>
+        <li class="nav-item">
+          <a class="action btn btn-small btn-link" href="${company_privacy_url}">${company_privacy_urltext}</a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+</div>
+</div>
+<script type="text/javascript">
+  document.getElementById("action-print-view").addEventListener("click", printView);
+  function printView(event) {
+  event.preventDefault();
+  window.print();
+  }
+</script>
+%if badge:
+<script src="${static.url('js/lms-base-vendor.js')}"></script>
+<script src="${static.url('js/certificates/certificates.js')}"></script>
+<div class="badges-overlay" style="display:none;">
+  <div class="badges-modal">
+    <div class="close"><span class="fa fa-close" alt="Close" aria-hidden="true"><input type="button" class="sr-only" value="Close"/></span></div>
+    <h1 class="hd-1 emphasized">Share on Mozilla Backpack</h1>
+    <p class="explanation">
+      To share your certificate on Mozilla Backpack, you must first have a Backpack account.
+      Complete the following steps to add your certificate to Backpack.
+    </p>
+    <hr class="modal-hr"/>
+    <img class="backpack-logo" src="${static.url('certificates/images/backpack-logo.png')}">
+    <ol class="badges-steps">
+      <li class="step">Create a <a href="https://backpack.openbadges.org/" target="_blank">Mozilla Backpack</a> account, or log in to your existing account
+      </li>
+      <li class="step"><a href="${badge.image_url}" target="_blank">Download this image (right-click, save as)</a> and then <a href="https://backpack.openbadges.org/backpack/add" target="_blank">upload</a> it to your backpack.</li>
+    </ol>
+    <div class="image-container">
+      <img class="badges-backpack-example" src="${static.url('certificates/images/backpack-ui.png')}">
+    </div>
+  </div>
+</div>
+%endif
+</body>
+</html>

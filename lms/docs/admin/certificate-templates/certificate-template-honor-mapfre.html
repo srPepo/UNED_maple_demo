@@ -1,0 +1,449 @@
+<%namespace name='static' file='/static_content.html'/>
+<%!
+   from django.urls import reverse
+   from django.utils.translation import ugettext as _
+   from django.template.defaultfilters import escapejs
+   %>
+<%
+   # set doc language direction
+   from django.utils.translation import get_language_bidi
+   dir_rtl = 'rtl' if get_language_bidi() else 'ltr'
+   course_mode_class = course_mode if course_mode else ''
+   %>
+<!DOCTYPE html>
+<html class="no-js" lang="${LANGUAGE_CODE}">
+  <head dir="${dir_rtl}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>${document_title}</title>
+    <%static:css group='style-certificates'/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/UNED_maple_demo2/js/lms-base-vendor.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/UNED_maple_demo2/js/lms-base-application.js" charset="utf-8"></script>
+  </head>
+  <body class="layout-accomplishment view-valid-accomplishment ${dir_rtl} certificate certificate-${course_mode_class}" data-view="valid-accomplishment">
+    <div class="wrapper-view" dir="${dir_rtl}">
+      <div class="wrapper-header" style="padding-top:0px; padding-bottom:0px;border-bottom: 1px solid #656565; box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1); background: rgba(224,217,225,0.75); z-index:10;">
+	    <header class="header-app" role="banner" style="position: relative; width: 100%; height: 76px;">
+	      <nav style="height: 40px;margin: 0px 0px 0px 0px; padding: 18px 10px 0; max-width: 1180px;display:block;">
+	        <p style="margin:0px; float:left;">
+	          <a class="logo" href="${company_tos_url}/../">
+		        <img class="logo-img" src="${logo_src}" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
+	          </a>
+	          <span class="sr-only">${logo_subtitle}</span>
+	        </p>
+	        <ul style="margin-top:10px;list-style:none;float:left;">
+	          <li style="display: inline-block; margin: 0 21px 0 0; font-size: 0.875em; font-weight: 600; text-transform: uppercase; letter-spacing: 0 !important;">
+		        <a id="header-link-courses" href="/../../courses" style="color: #585858;">${_('Search courses')}</a>
+	          </li>
+	          <li style="display: inline-block; margin: 0 21px 0 0; font-size: 0.875em; font-weight: 600; text-transform: uppercase; letter-spacing: 0 !important;">
+		        <a id="header-link-faq" href="/../../faq" style="color: #585858;">${_('What you want to ask us')}</a>
+	          </li>
+	          % if user.is_authenticated() and user.id == int(accomplishment_user_id):
+	          <li style="display: inline-block; margin: 0 21px 0 0; font-size: 0.875em; font-weight: 600; text-transform: uppercase; letter-spacing: 0 !important;">
+		        <a id="header-link-progress" href="/../../courses/${course_id}/progress" style="color: #585858;">${_('Back to course')}</a>
+	          </li>
+	          % endif
+		  % if static.show_language_selector():
+		  <% languages = static.get_released_languages() %>
+		  % if len(languages) > 1:
+		  <li style="display: inline-block; margin: 0 21px 0 0; font-size: 0.875em; letter-spacing: 0 !important;">
+		    <form action="/i18n/setlang/" method="post" class="settings-language-form" id="language-settings-form">
+		      <input type="hidden" id="csrf_token" name="csrfmiddlewaretoken" value="${csrf_token}">
+		      % if user.is_authenticated():
+		      <input title="preference api" type="hidden" class="url-endpoint" value="${reverse('preferences_api', kwargs={'username': user.username})}" data-user-is-authenticated="true">
+		      % else:
+		      <input title="session update url" type="hidden" class="url-endpoint" value="${reverse('session_language')}" data-user-is-authenticated="false">
+		      % endif
+		      <label><span class="sr" style="display:none;">${_("Choose Language")}</span>
+			<select class="input select language-selector" id="settings-language-value" name="language">
+			  % for language in languages:
+			  % if language[0] == LANGUAGE_CODE:
+			  <option value="${language[0]}" selected="selected">${language[1]}</option>
+			  % else:
+			  <option value="${language[0]}" >${language[1]}</option>
+			  % endif
+			  % endfor
+			</select>
+		      </label>
+		    </form>
+		  </li>
+		  % endif
+		  % endif
+	        </ul>
+	      </nav>
+	    </header>
+      </div>
+      <hr class="divider sr-only">
+      <section class="cert-first-level" style="text-align: center; font-family: 'Source Sans','Open Sans',Verdana,Geneva,sans-serif,sans-serif;font-size: 1em; font-style: normal; line-height: 1.4; margin: 0 auto; max-width: 1200px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; text-align: left;">
+	    <section style="padding: 20px;">
+	      <dl>
+	        <dt style="font-weight: 400; font-size: 12px;text-transform: uppercase;letter-spacing: 1px; margin-top: 10px; margin-bottom: 0px; color: #666;">${_('Student name')}</dt>
+	        <dd style="margin-left: 0;color:#000;">${accomplishment_copy_name | h}</dd>
+	      </dl>
+	      <div style="border-collapse: collapse; border-spacing: 0;margin-top: 20px; margin-left: auto; margin-right: auto;display:table;">
+	        <div style="display:table-row;">
+		      <div style="padding-bottom: 10px; vertical-align: middle;display:table-cell;">
+		        <div class="accomplishment-rendering"  style="background:#fff url('../static/UNED_maple_demo2/certificates/images/bg-honor.png') no-repeat; background-size: 195px 195px; background-position: center center; border:0.15rem solid #00553F; padding: 10px; top: -0.5rem;">
+		          <div style="border:0.25rem solid #00553F">
+                    <div class="accomplishment-type" style="display:table; width:100%;margin-bottom:0.5rem;margin-left:0px;margin-right:0px;">
+                      <div style="display: table-row; width:100%; margin-bottom:0px!important; margin-top:0px!important;">
+                        <div style="display: table-cell; width:25%;">
+                          <span class="accomplishment-type-symbol" style="display:block; float:left; width: 3rem; height: 3rem; margin-bottom: 0px;" >
+                            <img class="" src="/static/UNED_maple_demo2/images/uned-abierta-logo.png" alt="Logo UNED Abierta" style="max-height: 30px; max-width:60px; width: 60px; height: 30px; margin-top: 2px; margin-left: 2px; float: left;"/>
+                          </span>
+                        </div>
+                        <div style="display: table-cell; width:50%; padding-top: 6px; vertical-align:top;">
+                          <span class="accomplishment-type-label hd-4" style="font-size: 10px; font-weight: 600;">${_('CREDENTIAL')}</span>
+                        </div>
+                        <div style="display: table-cell; width:25%; padding-top: 6px; vertical-align:top;">
+                          <span class="accomplishment-type-date" style="text-align: right; font-style:italic;">
+                            <img class="" src="/static/UNED_maple_demo2/images/FM_2.png" alt="Logo MAPFRE" style="max-height: 30px; max-width: 60px; width: 60px; height: 30px;"/>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="wrapper-statement-and-signatories" style="padding-top:0px;">
+		              <div class="accomplishment-statement" style="border-bottom:none; background-color: rgba(0,0,0,0.15); padding-top:10px;margin-bottom: 0px; padding-bottom: 10px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif; padding-right: 20px; padding-left: 20px;">
+			            <p class="accomplishment-statement-lead" style="margin-bottom:5px;">
+			              <span class="accomplishment-summary copy copy-lead" style="text-align:left; width: 85%; margin-bottom: 4.21px; font-size: 5px; line-height: 1.4; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">${_('This credential certifies that')}</span>
+			              <strong class="accomplishment-recipient hd-1 emphasized" style=" width: 85%; text-align:left; font-size: 8px; font-weight:600;font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif; color: rgb(2, 158, 223); margin-bottom: 1.05px; color:#00553F;">${accomplishment_copy_name | h}</strong>
+			              <span class="accomplishment-summary copy copy-lead" style="width: 85%; text-align:left;margin-bottom: 5px; font-size: 5px; line-height: 1.4; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">${_('has successfully finished the course')}</span>
+			              <span class="accomplishment-course hd-1 emphasized" style="text-align:left; width: 85%; font-weight: 600; font-size: 7px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif; color: rgb(2, 158, 223); font-style: italic; margin-bottom: 0px; color:#00553F;">
+			                <span class="accomplishment-course-name" style="font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">${accomplishment_copy_course_name}</span>
+			              </span>
+			            </p>
+                        % if course_end_date and 'h' not in course_effort:
+			            <p class="accomplishment-statement-detail copy copy-lead" style="width: 85%; text-align:left; font-size: 5px; margin-bottom:0px;">${_('given from')} ${course_start_date} ${_('to')} ${course_end_date} ${_('with a duration of')} ${course_effort} ${_('hours')}</p>
+                        % elif not course_end_date and 'h' not in course_effort:
+			            <p class="accomplishment-statement-detail copy copy-lead" style="width: 85%; text-align:left; font-size: 5px; margin-bottom:0px;">${_('self paced')}, ${_('with a duration of')} ${course_effort} ${_('hours')}</p>
+                        % elif course_end_date and 'h' in course_effort:
+			            <p class="accomplishment-statement-detail copy copy-lead" style="width: 85%; text-align:left; font-size: 5px; margin-bottom:0px;">${_('given from')} ${course_start_date} ${_('to')} ${course_end_date}, ${_('with a duration of')} ${course_effort}</p>
+                        % else:
+			            <p class="accomplishment-statement-detail copy copy-lead" style="width: 85%; text-align:left; font-size: 5px; margin-bottom:0px;">${_('self paced')}, ${_('with a duration of')} ${course_effort}</p>
+                        % endif
+                        <p class="accomplishment-statement-detail copy copy-lead" style="width: 85%; text-align:left; font-size: 5px; margin-bottom:5px;">${_('offered by')} ${organization_short_name} ${_('in UNED Abierta, the online initiative of UNED.')}</p>
+                        <p class="accomplishment-statement-detail" style="font-size: 2px; width: 85%; text-align:left; margin-bottom: 0px; color:#646262;">${_('Course code:')} <span class="accomplishment-course-number" style="font-size: 2px; font-weight: bold; font-style: italic; color:#646262;">${course_number}</span></p>
+			          </div>
+			          % if mode != 'base':
+			          <div class="accomplishment-signatories" style="border-bottom:none; padding-bottom: 1.05px; margin-bottom: 2.11px;">
+			            <div class="wrapper-signatories">
+			              <div class="list-signatories">
+			                % if certificate_data:
+			                % for signatory in certificate_data.get('signatories', []):
+			                <div class="signatory" style="margin-left: 0px; margin-right: 0;">
+				              <img class="signatory-signature" src="${static.url(signatory['signature_image_path'])}" alt="${_('Signature of')} ${signatory['name']}" style="display:block; margin-bottom: 0px; max-height:20px; padding-top: 5px; padding-bottom: 5px;"/>
+				              <p class="signatory-name hd-5" style="border-top:1px solid #f1f1f1; font-size: 4px;font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif; color: #424141; font-weight:700;">${signatory['name']}</p>
+				              <p class="signatory-credentials copy copy-micro" style="margin-bottom: 0px;">
+				                <span class="role" style="font-size: 3px;">${signatory['title']}</span>
+				              </p>
+			                </div>
+			                % endfor
+			                % endif
+			              </div>
+			            </div>
+			            <div id="verification-credential-miniature" style="margin-top:10px;">
+			              <p class="signatory-credentials copy copy-micro" style="margin-bottom: 0px; font-size: 3px;">
+			                <span class="role">${_('CREDENTIAL')}  ${_('Release date:')} ${certificate_date_issued}</span>
+			              </p>
+			              <p class="signatory-credentials copy copy-micro" style="margin-bottom: 0px; font-size: 3px;">
+			                <span class="role">* ${_('The authenticity of this credential can be verified at')} <a href="${certificate_id_url}">${certificate_id_url}</a></span>
+			              </p>
+			              <p class="signatory-credentials copy copy-micro" style="margin-bottom: 0px; font-size: 3px;">
+                            <span class="role">${_('This degree is given as suitable of')} <strong>UNED</strong> ${_('and it does not have the official nature established in')} <strong>${_('number 30 of the Organic Law 4/2007')}</strong> ${_('that modifies the')} <strong>${_('article 34 of Organic Law 6/2001 of Universities')}</strong></span>
+			              </p>
+		                </div>
+			          </div>
+			          % endif
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		      <div style="padding-bottom: 10px;vertical-align: middle;padding-left: 100px!important;display:table-cell;">
+		        <h1 style="font-family: 'Source Sans','Open Sans',Verdana,Geneva,sans-serif,sans-serif; font-size:100%; line-height: 1.4; display: block;font-weight: bold;">${_('Valid Credential of UNED Abierta for')} <span>${accomplishment_copy_name | h}</span></h1>
+		        <dl>
+	              <dt  style="font-weight: 400; font-size: 12px;text-transform: uppercase;letter-spacing: 1px; margin-top: 10px; margin-bottom: 0px; color: #666;">${_('Student name')}</dt>
+		          <dd style="margin-left: 0;color:#000;">${accomplishment_copy_name | h}</dd>
+		          <dt  style="font-weight: 400; font-size: 12px;text-transform: uppercase;letter-spacing: 1px; margin-top: 10px; margin-bottom: 0px; color: #666;">${_('Identifier number')}</dt>
+		          <dd style="margin-left: 0;color:#000;">${certificate_id_number}</dd>
+		          <dt  style="font-weight: 400; font-size: 12px;text-transform: uppercase;letter-spacing: 1px; margin-top: 10px; margin-bottom: 0px; color: #666;">${_('Course')}</dt>
+		          <dd style="margin-left: 0;color:#000;">${course_number}: ${accomplishment_copy_course_name}</dd>
+		          <dd style="font-size: 14px;color: #555555;margin-left:0;">${_('A course of')} ${course_effort} ${_('offered by')} ${organization_short_name} ${_('in UNED Abierta, the UNED initiative of online learning.')}</dd>
+		        </dl>
+		      </div>
+	        </div>
+	        <div style="display:table-row;">
+		      <div style="padding-bottom: 10px;vertical-align: middle;display:table-cell;">
+		        <button class="cert-download action action-print" id="action-print-view-anyone" style="margin: 0; font-size: 100%; vertical-align: baseline; display: block; background: #666; border: 1px solid #333; float: left; -webkit-border-radius: 3px;-moz-border-radius: 3px;-ms-border-radius: 3px;-o-border-radius: 3px; border-radius: 3px; padding: 6px 8px; color: #fff; text-decoration: none;">
+	              <i class="icon fa fa-print" aria-hidden="true"></i>
+		          ${_('Print credential')}
+		        </button>
+		      </div>
+		      <div style="padding-bottom: 10px;vertical-align: middle;padding-left: 100px!important;display:table-cell;">
+		        <label for="copy_url" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">${_('Credential URL')}</label>
+		        <input id="copy_url" name="read-only-certificate-url" type="text" readonly="readonly" value="${certificate_id_url}" style="vertical-align: middle;height: 30px; width: 480px; font-family: Arial; font-size: 13px;box-sizing: content-box;"/><a id="copy_url_anchor" href="#" class="cert-download" style="margin: 0; font-size: 100%; vertical-align: baseline; display: block;background: #666; border: 1px solid #333; float: left; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; padding: 6px 8px; color: #fff;text-decoration: none;" data-tip="${_('Copied text to Clipboard')}">${_('Copy URL and share')}</a>
+		        <a href="#" id="show_tooltip" style="display:none; font-size: 12px; index: 999; left: 20%; background:#000; color:#e0e0e0; padding:0px 7px; transition:opacity 1s ease-out;opacity: 1; "></a>
+		      </div>
+	        </div>
+	      </div>
+	    </section>
+      </section>
+      <section style="margin: 20px auto 0;max-width: 1200px;text-align: left;font: 16px Consolas, Lucida Console, Monaco, monospace;color: #666;text-shadow: 0 1px 0 #fff;zoom: 1;display:table;content:'';">
+      </section>
+      <div class="wrapper-introduction">
+	    <section class="introduction" style="display: block;">
+	      <h2 class="introduction-copy hd-2 emphasized" style="font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">${platform_name} ${_('recognizes the following student achievement')}</h2>
+	    </section>
+      </div>
+      <%! from django.utils.translation import ugettext as _ %>
+      <%
+	     course_mode_class = course_mode if course_mode else ''
+	     %>
+      <main class="accomplishment accomplishment-main">
+	    <div class="wrapper-accomplishment-rendering">
+	      <div class="accomplishment-rendering"  style="background:#fff url('../static/UNED_maple_demo2/certificates/images/bg-honor.png') no-repeat; background-size: 760px 760px; background-position: center center; border:0.15rem solid #00553F">
+	        <div style="border:0.50rem solid #00553F; width: 100%;">
+              <div class="accomplishment-type" style="display:table; width:100%;margin-bottom:20px;margin-left:0px;margin-right:0px;">
+                <div style="display: table-row; width:100%; margin-bottom:0px!important; margin-top:0px!important;">
+                  <div style="display: table-cell; width:25%;">
+                    <span class="accomplishment-type-symbol" style="display:block; float:left;" >
+                      <img class="" src="/static/UNED_maple_demo2/images/uned-abierta-logo.png" alt="Logo UNED Abierta" style="max-height: 100px; max-width: 208px; width: 208px; height: 100px; margin-top: 20px; margin-left: 20px;"/>
+                    </span>
+                  </div>
+                  <div style="display: table-cell; width:50%; padding-top: 20px; vertical-align:top;">
+                    <span class="accomplishment-type-label hd-4 accomplishment-type-label-print" style="font-size: 35px; font-weight: 400;text-align:center;">${_('CREDENTIAL')}</span>
+                  </div>
+                  <div style="display: table-cell; width:25%; padding-top: 20px; vertical-align:top;">
+                    <span class="accomplishment-type-date accomplishment-type-date-print" style="text-align: right; font-style:italic;">
+                      <img class="" src="/static/UNED_maple_demo2/images/FM_2.png" alt="Logo MAPFRE" style="max-height: 100px; max-width: 208px; width: 208px; height: 100px;"/>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="wrapper-statement-and-signatories" style="padding-top:60px;">
+		        <div class="accomplishment-statement" style="border-bottom:none; background-color: rgba(0,0,0,0.15); padding-top:40px;margin-bottom: 0px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif; padding-right: 85px; padding-left: 85px;">
+		          <p class="accomplishment-statement-lead" style="margin-bottom:5px;">
+		            <span class="accomplishment-summary copy copy-lead" style="text-align:left; width: 85%; margin-bottom: 5px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">${_('This credential certifies that')}</span>
+		            <strong class="accomplishment-recipient hd-1 emphasized" style=" width: 85%; text-align:left; font-weight:800;font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif; color: rgb(2, 158, 223); margin-bottom: 5px; color:#00553F;">${accomplishment_copy_name | h}</strong>
+		            <span class="accomplishment-summary copy copy-lead" style="width: 85%; text-align:left;margin-bottom: 0px; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">${_('has successfully finished the course')}</span>
+
+		            <span class="accomplishment-course hd-1 emphasized" style="text-align:left; width: 85%; font-weight: 800; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif; color: rgb(2, 158, 223); font-style: italic;font-size:1.3125rem; color:#00553F; margin-bottom:0px;">
+		              <span class="accomplishment-course-name" style="font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">${accomplishment_copy_course_name}</span>
+		            </span>
+		          </p>
+                  % if course_end_date and 'h' not in course_effort:
+		          <p class="accomplishment-statement-detail copy copy-lead" style="width: 85%; text-align:left; margin-bottom:0px;">${_('given from')} ${course_start_date} ${_('to')} ${course_end_date} ${_('with a duration of')} ${course_effort} ${_('hours')}</p>
+                  % elif not course_end_date and 'h' not in course_effort:
+		          <p class="accomplishment-statement-detail copy copy-lead" style="width: 85%; text-align:left; margin-bottom:0px;">${_('self paced')}, ${_('with a duration of')} ${course_effort} ${_('hours')}</p>
+                  % elif course_end_date and 'h' in course_effort:
+		          <p class="accomplishment-statement-detail copy copy-lead" style="width: 85%; text-align:left; margin-bottom:0px;">${_('given from')} ${course_start_date} ${_('to')} ${course_end_date}, ${_('with a duration of')} ${course_effort}</p>
+                  % else:
+		          <p class="accomplishment-statement-detail copy copy-lead" style="width: 85%; text-align:left; margin-bottom:0px;">${_('self paced')}, ${_('with a duration of')} ${course_effort}</p>
+                  % endif
+                  <p class="accomplishment-statement-detail copy copy-lead" style="width: 85%; text-align:left; margin-bottom:5px;">${_('offered by')} ${organization_short_name} ${_('in UNED Abierta, the online initiative of UNED.')}</p>
+                  <p class="accomplishment-statement-detail" style="width: 85%; text-align:left; margin-bottom: 0px; font-size: 0.8rem; color:#646262;">${_('Course code:')} <span class="accomplishment-course-number" style="width: 85%; text-align:left; font-weight: bold; font-style: italic; color:#646262;">${course_number}</span></p>
+		        </div>
+		        % if mode != 'base':
+		        <div class="accomplishment-signatories" style="border-bottom:none; padding-bottom: 5px; margin-bottom: 0px;">
+		          <div class="wrapper-signatories">
+		            <div class="list-signatories">
+		              % if certificate_data:
+		              % for signatory in certificate_data.get('signatories', []):
+		              <div class="signatory" style="margin-left: 0px; margin-right: 0;">
+			            <img class="signatory-signature" src="${static.url(signatory['signature_image_path'])}" alt="${_('Signature of')} ${signatory['name']}" style="display:block; margin-bottom: 0px;"/>
+			            <p class="signatory-name hd-5" style="border-top:1px solid #f1f1f1;font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif; color: #424141; font-weight:700;">${signatory['name']}</p>
+			            <p class="signatory-credentials copy copy-micro">
+			              <span class="role">${signatory['title']}</span>
+			            </p>
+		              </div>
+		              % endfor
+		              % endif
+		            </div>
+		          </div>
+		          <div id="verification-credential" style="margin-top:10px;">
+		            <p class="signatory-credentials copy copy-micro" style="margin-bottom: 0px; font-size: 0.65rem;">
+		              <span class="role">${_('CREDENTIAL')}  ${_('Release date:')} ${certificate_date_issued}</span>
+		            </p>
+		            <p class="signatory-credentials copy copy-micro" style="margin-bottom: 0px; font-size: 0.65rem;">
+		              <span class="role">* ${_('The authenticity of this credential can be verified at')} <a href="${certificate_id_url}">${certificate_id_url}</a></span>
+		            </p>
+		            <p class="signatory-credentials copy copy-micro" style="margin-bottom: 0px; font-size: 0.65rem;">
+		              <span class="role">${_('This degree is given as suitable of')} <strong>UNED</strong> ${_('and it does not have the official nature established in')} <strong>${_('number 30 of the Organic Law 4/2007')}</strong> ${_('that modifies the')} <strong>${_('article 34 of Organic Law 6/2001 of Universities')}</strong></span>
+		            </p>
+		          </div>
+		        </div>
+		        % endif
+	          </div>
+	        </div>
+	      </div>
+	      <div class="wrapper-accomplishment-metadata">
+	        <div class="accomplishment-metadata">
+	          <h2 class="accomplishment-metadata-title hd-6" style="font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;color: #424141;">${_('More about the achievement of')} ${accomplishment_copy_name | h}</h2>
+	          <div class="wrapper-metadata">
+		        <dl class="metadata accomplishment-recipient">
+		          <dt class="label sr-only">Awarded to:</dt>
+		          <dd class="value copy copy-meta">
+		            <span class="recipient-img">
+		              <img class="src" src="/static/certificates/images/demo-user-profile.png" alt="${_('User profile')}"/>
+		            </span>
+		            <div class="recipient-details">
+		              <p class="recipient-name" style="margin-bottom: 0.3125rem;font-size: 1.3125rem; font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight: 400;line-height: 1.5;color: #424141;">${accomplishment_copy_name | h}</p>
+		              <p class="recipient-username">${accomplishment_copy_username} @ ${platform_name}</p>
+		            </div>
+		          </dd>
+		        </dl>
+		        <dl class="metadata accomplishment-id">
+		          <dt class="label copy copy-meta">${_('Identifier number of the Credential:')}</dt>
+		          <dd class="value copy copy-base">${certificate_id_number}</dd>
+		        </dl>
+		        <dl class="metadata accomplishment-date">
+		          <dt class="label copy copy-meta">${_('Issued on date:')}</dt>
+		          <dd class="value copy copy-base">${certificate_date_issued}</dd>
+		        </dl>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+      </main>
+      <div class="wrapper-about">
+	    <aside role="complementary" class="about" aria-label="${_('About UNED Abierta Credentials')}">
+	      <section class="about-item about-edx">
+	        <h2 class="about-edx-title hd-4" style="font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;color: #424141;">${_('About')} ${platform_name}</h2>
+	        <div class="about-edx-copy copy copy-meta">
+	          <p>${platform_name} ${_('offers massive online open courses (MOOCs) to everyone.')} ${platform_name} ${_('is based on Open edX, an online non-profit initiative.')}</p>
+	          <a class="action" href="${company_about_url}">${_('Learn more about')} ${platform_name}</a>
+	        </div>
+	      </section>
+	      <section class="about-item about-accomplishments">
+	        <h2 class="about-title hd-4" style="font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;color: #424141;">${_('About the achievements of')} ${platform_name}</h2>
+	        <div class="about-copy copy copy-meta">
+	          <p>${platform_name} ${_('recognizes achievements through credentials, accomplished by students when completing the variety of activities of')} ${platform_name} ${_('under the agreement of')} <a href='${company_tos_url}'>${_('Honor Code')}</a>. ${_('Some credentials require the action of additional steps, such as')} <a href='${company_verified_certificate_url}'>${_('verification of student identity')}</a>.</p>
+	        </div>
+	      </section>
+	    </aside>
+      </div>
+      <hr class="divider sr-only">
+      <div class="wrapper-footer">
+	    <footer class="footer-app" role="contentinfo" id="company-info">
+	      <div class="footer-app-copyright">
+	        <p class="copy copy-micro">${copyright_text}</p>
+	      </div>
+	      <nav class="footer-app-nav">
+	        <ul class="list list-legal">
+	          <li class="nav-item">
+		        <a class="action btn btn-small btn-link" href="${company_tos_url}">${company_tos_urltext}</a>
+	          </li>
+	        </ul>
+	      </nav>
+	    </footer>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function printView(event) {
+      event.preventDefault();
+      window.print();
+      }
+      function copyUrl(event) {
+      var showTip = document.getElementById("show_tooltip");
+      showTip.style.display = 'hide';
+      var urlText = document.getElementById("copy_url");
+      urlText.select();
+      try {
+      var successful = document.execCommand('copy');
+      var msg = successful ? 'successful' : 'unsuccessful';
+      showTip.innerHTML = 'URL copiada al portapapteles';
+      showTip.style.display = 'block';
+      } catch (err) {
+      showTip.innerHTML = 'No se pudo copiar la URL. Se produjo el siguiente error: ' + err;
+      showTip.style.display = 'block';
+      }
+      }
+      document.getElementById("copy_url_anchor").addEventListener("click", copyUrl);
+      document.getElementById("action-print-view-anyone").addEventListener("click", printView);
+
+      $('#action-print-view-anyone').hover(function(event) {
+      $('#action-print-view-anyone').css("background", "#520058");
+      });
+
+      $('#action-print-view-anyone').on('focus', function(event) {
+      $('#action-print-view-anyone').css("background", "#520058");
+      });
+
+      $('#action-print-view-anyone').on('mouseout', function(event) {
+      $('#action-print-view-anyone').css("background", "#666");
+      });
+
+      $('#action-print-view-anyone').on('focusout', function(event) {
+      $('#action-print-view-anyone').css("background", "#666");
+      });
+
+      $('#copy_url_anchor').hover(function(event) {
+      $('#copy_url_anchor').css("background", "#520058");
+      });
+
+      $('#copy_url_anchor').on('focus', function(event) {
+      $('#copy_url_anchor').css("background", "#520058");
+      });
+
+      $('#copy_url_anchor').on('mouseout', function(event) {
+      $('#copy_url_anchor').css("background", "#666");
+      });
+
+      $('#copy_url_anchor').on('focusout', function(event) {
+      $('#copy_url_anchor').css("background", "#666");
+      });
+
+      $('#header-link-courses').hover(function(event) {
+      $('#header-link-courses').css("color", "#00533F");
+      $('#header-link-courses').css("border-bottom-color", "transparent");
+      });
+      $('#header-link-courses').on('focus', function(event) {
+      $('#header-link-courses').css("color", "#00533F");
+      $('#header-link-courses').css("border-bottom-color", "transparent");
+      });
+      $('#header-link-courses').on('mouseout', function(event) {
+      $('#header-link-courses').css("color", "#585858");
+      $('#header-link-courses').css("border-bottom-color", "transparent");
+      });
+      $('#header-link-courses').on('focusout', function(event) {
+      $('#header-link-courses').css("color", "#585858");
+      $('#header-link-courses').css("border-bottom-color", "transparent");
+      });
+
+      $('#header-link-faq').hover(function(event) {
+      $('#header-link-faq').css("color", "#00533F");
+      $('#header-link-faq').css("border-bottom-color", "transparent");
+      });
+      $('#header-link-faq').on('focus', function(event) {
+      $('#header-link-faq').css("color", "#00533F");
+      $('#header-link-faq').css("border-bottom-color", "transparent");
+      });
+      $('#header-link-faq').on('mouseout', function(event) {
+      $('#header-link-faq').css("color", "#585858");
+      $('#header-link-faq').css("border-bottom-color", "transparent");
+      });
+      $('#header-link-faq').on('focusout', function(event) {
+      $('#header-link-faq').css("color", "#585858");
+      $('#header-link-faq').css("border-bottom-color", "transparent");
+      });
+
+      $('#header-link-progress').hover(function(event) {
+      $('#header-link-progress').css("color", "#00533F");
+      $('#header-link-progress').css("border-bottom-color", "transparent");
+      });
+      $('#header-link-progress').on('focus', function(event) {
+      $('#header-link-progress').css("color", "#00533F");
+      $('#header-link-progress').css("border-bottom-color", "transparent");
+      });
+      $('#header-link-progress').on('mouseout', function(event) {
+      $('#header-link-progress').css("color", "#585858");
+      $('#header-link-progress').css("border-bottom-color", "transparent");
+      });
+      $('#header-link-progress').on('focusout', function(event) {
+      $('#header-link-progress').css("color", "#585858");
+      $('#header-link-progress').css("border-bottom-color", "transparent");
+      });
+    </script>
+  </body>
+</html>

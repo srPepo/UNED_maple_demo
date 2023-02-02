@@ -1,0 +1,30 @@
+$secondary: #b5a4b7;
+$header-bg: transparentize(lighten($secondary, 18.5%), .25);
+$gray-1: #f1f1f1; //Main BG Color
+
+body.view-in-course {
+    background-color: $gray-1!important;
+    header.global.slim {
+        background-color: $header-bg;
+        border-bottom-color: #fff;
+        h1.logo {
+            &:before {
+                background-image: -webkit-linear-gradient(#fff 0%, #fff);
+            }
+        }
+    }
+}
+
+.header-global .user .dropdown.dropdown-button {
+    padding: 5px 10px 15px 10px;
+    border-radius: 0px;
+}
+
+.header-global .user .dropdown.dropdown-button.slim {
+    padding: 10px 10px 19px 10px;
+    border-radius: 0px;
+}
+
+.header-global .user .user-link .user-image-frame {
+    max-width: 44px;
+}

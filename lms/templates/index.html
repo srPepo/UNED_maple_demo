@@ -1,0 +1,141 @@
+<%page expression_filter="h"/>
+<%inherit file="main.html" />
+<%namespace name='static' file='static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from django.urls import reverse
+
+from openedx.core.djangolib.markup import HTML, Text
+%>
+<style>
+	*{
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        background: #f1f1f1;
+    }
+
+	.home>header{
+	    background: url('/static/UNED_maple_demo/images/iedra.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+        width: 100%;
+	}
+    
+    .home>header .outer-wrapper {
+    position: relative;
+    margin: 0 auto;
+    padding: 80px;
+    max-width: 1200px;
+    }
+	.animation-home-header-pop-up, .home>header .outer-wrapper {
+    animation: home-header-pop-up 1.15s ease-in-out;
+    animation-fill-mode: both;
+    animation-delay: 1s;
+    }
+
+    input[type="submit"], input[type="button"], button, .button {
+    border: 1px solid #000007;
+    border-bottom: 1px solid #000;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 0 0 #771d64;
+    color: #fff;
+    display: inline-block;
+    background-color: #520058;
+    background-image: linear-gradient(to bottom,#520058 0%,#1a0037 50%,#000028 50%,#03002a 100%);
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px #000;
+    font: normal 1.2rem/1.6rem "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    letter-spacing: 1px;
+    padding: 4px 20px;
+    vertical-align: top;
+    -webkit-font-smoothing: antialiased;
+}
+
+	article, aside, details, figcaption, figure, footer, header, nav, section {
+    display: block;
+  }
+</style>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="home">
+      <header>
+        <div class="outer-wrapper">
+          <div class="title">
+            <div class="heading-group">
+              % if homepage_overlay_html:
+                ${homepage_overlay_html | n, decode.utf8}
+              % else:
+                  <h1>${Text(_(u"¡Bienvenido a Cursos UNED Abierta!"))}</h1>
+                  <p>${_("cursos abiertos para todo el mundo")}</p>
+              % endif
+            </div>
+            <div class="course-search" style="padding:0px;text-align:center">
+                <button>
+                <a href="/courses" style="color:white;">
+                    Buscar un curso
+                </a>
+                </button>
+                </div>
+            % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
+              <div class="course-search">
+                <form method="get" action="/courses">
+                  <label><span class="sr">${_("Search for a course")}</span>
+                    <input class="search-input" name="search_query" type="text" placeholder="${_("Search for a course")}"></input>
+                  </label>
+                  <button class="search-button" type="submit">
+                    <span class="icon fa fa-search" aria-hidden="true"></span><span class="sr">${_("Search")}</span>
+                  </button>
+                </form>
+              </div>
+            % endif
+
+          </div>
+
+          % if show_homepage_promo_video:
+            <a href="#video-modal" class="media" rel="leanModal">
+              <div class="hero">
+                <div class="play-intro"></div>
+              </div>
+            </a>
+          % endif
+        </div>
+
+      </header>
+      <%include file="${courses_list}" />
+
+    </section>
+</main>
+
+% if show_homepage_promo_video:
+  <section id="video-modal" class="modal home-page-video-modal video-modal">
+    <div class="inner-wrapper">
+      <iframe title="YouTube Video" width="640" height="360" src="//www.youtube.com/embed/${homepage_promo_video_youtube_id}?showinfo=0" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+% endif
+
+<%block name="js_extra">
+   <script type="text/javascript">
+      $(window).load(function() {
+         if(getParameterByName('next')) {
+              $('#login').trigger("click");
+         }
+      })
+   </script>
+</%block>
+
+% if show_signup_immediately is not UNDEFINED:
+  ## NOTE: This won't work in production, because anonymous views are cached, so it will
+  ## show either with or without this extra js for 3 minutes at a time.
+<script type="text/javascript">
+  $(window).load(function() {$('#signup_action').trigger("click");});
+</script>
+% endif

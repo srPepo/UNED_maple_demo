@@ -1,0 +1,181 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("FAQ")}</%block>
+
+<style>
+      body {
+          font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+          font-size: 1rem;
+          font-style: normal;
+          line-height: 1em;
+          background: #f1f1f1;
+      }
+      
+      .container.about, section.about.outside-app, .view-profile .profile-self .wrapper-profile-field-account-privacy .about.u-field-account_privacy, .view-profile .about.wrapper-profile-sections, .view-profile .about.badge-set-display {
+          padding: 20px 30px 120px;
+      }
+      
+      @media (min-width: 768px){}
+      .container, section.outside-app, .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .wrapper-profile-sections, .view-profile .badge-set-display {
+          margin: 0 auto;
+          padding: 40px 0;
+          max-width: 1180px;
+          min-width: 760px;
+          width: 100%;
+      }
+      
+      .container, section.outside-app, .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .wrapper-profile-sections, .view-profile .badge-set-display {
+          box-sizing: border-box;
+      }
+      
+      article, aside, details, figcaption, figure, footer, header, nav, section {
+          display: block;
+      }
+      
+      p.uned-h1{
+          font-size: 26px;
+          line-height: 30px;
+          margin: 10px 0px;
+          font-family: "Verdana";
+          font-weight: bold;
+          color: inherit;
+          text-rendering: optimizelegibility;
+      }
+      p.uned-paragraph {
+          margin: 0px 0px 10px;
+          font-size: 14px;
+          line-height: 20px;
+          color: #333;
+          font-family: "Verdana";
+      }
+      ul, ol {
+          padding: 0 0 0 40px;
+          margin: 1em 0;
+      }
+      
+      p.uned-h1.index {
+          margin-top: 40px;
+      }
+      p.uned-h2 {
+          font-size: 22px;
+          line-height: 30px;
+          margin: 10px 0px;
+          font-family: "Verdana";
+          font-weight: bold;
+          color: inherit;
+          text-rendering: optimizelegibility;
+      }
+      section.about p.uned-honor {
+          font-family: "Verdana";
+          font-size: 14px;
+      }
+      p+p, ul+p, ol+p {
+          margin-top: 20px;
+      }
+      a.uned {
+          color: #520058 !important;
+          text-decoration: none !important;
+          font-family: "Verdana","Helvetica Neue","Helvetica","Arial","Source Sans","Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif,"Verdana","Helvetica Neue","Helvetica","Arial","Source Sans","Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif,Georgia,Cambria,"Times New Roman",Times,serif;
+          line-height: 1.6em;
+      }
+      li {
+          display: list-item;
+          text-align: -webkit-match-parent;
+      }
+      ul {
+          list-style-type: disc;
+      }
+      li.uned {
+      margin: 0px 0px 10px;
+      font-size: 14px;
+      line-height: 20px;
+      color: #333;
+      margin: 10px 0px;
+      font-family: "Verdana";
+      text-rendering: optimizelegibility;
+      }
+      
+      </style>
+
+<main id="main" aria-label="Content" tabindex="-1">
+  <section class="container about tablet-mobile">
+    <p class="uned-h1"><strong>${_("FAQ")}</strong></p>
+    <ol>
+      <li class="uned"><strong>${_("What happens if I haven't received an activation or password reset email?")}</strong>
+	<p>${_("If you haven't received an automatic email it could be because:")}</p>
+	<ul>
+	  <li class="uned">${_("You made a typo mistake introducing your email.")}</li>
+	  <li class="uned">${_("Your spam filter could have blocked the email. Please check your spam tray.")}</li>
+	  <li class="uned">${_("You may be using an old browser. We recommend you download the latest version of Firefox or Chrome.")}</li>
+	  <li class="uned">${_("Verify JavaScript is enabled in your browser. Please, check the browser configuration and confirm JavaScript is enabled.")}</li>
+	</ul>
+	<p>${_("If you continue having problems to activate your account, we recommend you try to create a new account. There is no need to do anything about the old account. If the account is not activated with the link of the email, it will disapear afterwards.")}</p>
+      </li>
+      <li class="uned"><strong>${_("Is necessary to register an email and a real name?")}</strong>
+	<ul>
+	  <li class="uned"> ${_("The email is necessary for registering and in need of recovering the password.")}</li>
+	  <li class="uned"> ${_("The real name is not necessary, but remember it will the name shown in the credentials.")}</li>
+	</ul>
+      </li>
+      <li class="uned"><strong>${_("Can I change my date afterwards?")}</strong>
+	<ul>
+	  <li class="uned">${_("In your profile you will be able to change: fullname, email and password.")}</li>
+	  <li class="uned">${(_("The name of the {start_strong}user can't be changed{end_strong}.")).format(start_strong='<strong>', end_strong='</strong>')|n}</li>
+	</ul>
+      </li>
+      <li class="uned"><strong>${_("How can I change my email?")}</strong>
+	<p>${(_("Go to {start_anchor}Profile student{end_anchor} and login with the email and password you used in your platform registration. Once logged in, in the upper left side of your profile window, you will find the \"Email\" option. Click on \"edit\" and write your new contact email and your new password. Then click in \"change email\" and your changes will be saved.")).format(start_anchor='<a class=\"uned-anchor\" href=\"https://iedra.uned.es/dashboard\" title=\"', end_anchor='\">https://iedra.uned.es/dashboard</a>')|n}</p>
+      </li>
+      <li class="uned"><strong>${_("I've made a typo mistake writing my name and I want to fix it")}</strong>
+	<p>${(_("Go to {start_anchor}Profile student{end_anchor} and login with the email and password you used in your platform registration. Once logged in, in the upper left side of your profile window, you will find the \"Fullname\" option. Click on \"edit\" and write your fullname as it will appear in the credentials and specify a reason for this change. Then click in \"change my fullname\" and your changes will be saved.")).format(start_anchor='<a class=\"uned-anchor\" href=\"https://iedra.uned.es/dashboard\" title=\"', end_anchor='\">https://iedra.uned.es/dashboard</a>')|n}</p>
+      </li>
+      <li class="uned"><strong>${_("What happens if I have technical issues with my registration or accessing the course?")}</strong>
+	<p>${_("Lots of the registration or access problemas are caused by the used browser. If this happens, try this:")}</p>
+	<ul>
+	  <li class="uned"> ${_("Change to a newer version of Firefox or Chrome")}</li>
+	  <li class="uned"> ${_("Check your browser configuration to assure JavaScript and cookies are enabled.")}</li>
+	  <li class="uned"> ${(_("We recommend you at this point having the latest version of Java JRE installed, the version can be verified at {java_url}.")).format(java_url='<a title=\"Java\" class=\"uned-anchor\" target=\"_blank\" href=\"http://www.java.com/es/\">http://www.java.com/es/</a>')|n}</li>
+	  <li class="uned"> ${_("Clean your browser history and cache.")}</li>
+	</ul>
+      </li>
+      <li class="uned"><strong>${_("How can I request the credentials?")}</strong>
+	<p>${(_("Go to {start_anchor}Credentials{end_anchor}.")).format(start_anchor='<strong><a class=\"uned-anchor\n" title=\"', end_anchor='\" href=\"https://iedra.uned.es/what_is_verified_cert\">https://iedra.uned.es/what_is_verified_cert</a></strong>')|n}</p>
+      </li>
+      <li class="uned"><strong>${_("How much do these courses cost?")}</strong>
+	<p>${_("The courses are totally free.")}</p>
+      </li>
+      <li class="uned"><strong>${_("Is the course face-to-face or online?")}</strong>
+	<p>${_("All UNED Abierta courses are online.")}</p>
+      </li>
+      <li class="uned"><strong>${_("What are the minimum recommendations for the hardware to use the platform?")}</strong>
+	<p>${_("You may access with MAC, PC or Linux computers and Windows, Android or iOS mobile devices. In this last case the memory and processing required will depend on the resources of each course.")}</p>
+	<p>${_("It is important to have in consideration that most of the courses have videos (usually YouTube) and PDF files as part of their content. So you need to verify you have the required programs or applications to see this content.")}</p>
+      </li>
+      <li class="uned"><strong>${_("I can't play a video.")}</strong>
+	<p>${_("Try with a different browser. We recommend you using Firefox or Chrome to play videos.")}</p>
+      </li>
+      <li class="uned"><strong>${_("When does my course start or finish?")}</strong>
+	<p>${_("You can see the start date and duration of each course in the course about page. The courses have a teaching period indicated in each course; finishing this time, you will be able to access the course and request the credentials, but there won't be either teaching support nor technical.")}</p>
+      </li>
+      <li class="uned"><strong>${_("What is the workload of the courses?")}</strong>
+	<p>${_("The planned hours of study for each course are usually in the course about page, this is an estimated course effort.")}</p>
+      </li>
+      <li class="uned"><strong>${_("What prerequisites do the courses have?")}</strong>
+	<p>${_("Each course is different; some courses have prerrequisites and others don't. Take a look at the specific recommended prerequisites in each course about page.")}</p>
+      </li>
+      <li class="uned"><strong>${_("Can I be register in more than one course?")}</strong>
+	<p>${_("You can register in all the courses you want.")}</p>
+      </li>
+      <li class="uned"><strong>${_("What time is the tutoring or the access to the course?")}</strong>
+	<p>${_("Courses are open 24 hours, so you can access whenever you have time.")}</p>
+      </li>
+      <li class="uned"><strong>${_("I have an issue with my course or the platform.")}</strong>
+	<p>${_("If you have any problem with some course content related go to the course discussion page.")}</p>
+	<p>${(_("If you have a technical issue with the course check again this frequently asked questions (FAQs). If our FAQs section doesn't solve your problem write an email to {start_anchor}Contact with technical support{end_anchor} to notify us your issue.")).format(start_anchor='<a class=\"uned-anchor\" href=\"mailto:soporte.coma@adm.uned.es\" title=\"', end_anchor='\">soporte.coma@adm.uned.es</a>')|n}</p>
+	<p class="uned-faq-ending"><strong><em>${_("We will not attend questions explained in this FAQs.")}</em></strong></p>
+      </li>
+    </ol>
+  </section>
+</main>

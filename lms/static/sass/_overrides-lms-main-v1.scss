@@ -1,0 +1,674 @@
+/****************************************************************************************************
+*   UNED-ABIERTA Theming File
+*
+*   Contains all the theme color definitions for the UNED-ABIERTA Open Source MOOC Project
+*
+****************************************************************************************************/
+
+//-----------------
+//  Color variables (from UNED-ABIERTA palette unless noted)
+//-----------------
+
+//Main Color Variables
+$main-color: #520058;
+$dark-color: #00533f; //Link Color
+$light-color: #24b1ad; //Selected Header BG Color, ie. calendar        ***Custom, not from palette***
+$bg-color: #bde7e6; //Selected Content BG Color, ie. calendar          ***Custom, not from palette***
+
+//Main BG Color Variables
+$main-bg: #f1f1f1;
+$main-bg-60: lighten($main-bg, 18.5%); //Main Border/HR Color
+$main-bg-25: lighten($main-bg, 25%); 
+
+//Secondary Color Variables
+$secondary: #b5a4b7;
+$secondary-50: lighten($secondary, 9%);
+$secondary-25: lighten($secondary, 20%); //Important Heading BG Color 
+
+//Gray Color Variables
+$gray: #3f3f3f; //Main Text Color
+$gray-75: lighten($gray, 18.25%); //Lighter Text Color
+
+$gray-3: #e9e9e9; //Block/Course BG Color
+$gray-2: #f2f2f2;
+$gray-1: #f1f1f1; //Main BG Color
+$white: $gray-1;
+
+$black: #2e2e2e;
+$black-80: #585858;
+
+//-----------------
+//  Font Assignment
+//-----------------
+ 
+$sans-serif: "Source Sans", "Open Sans", Verdana, Geneva, sans-serif, sans-serif;
+$theme-sans-font: 'Source Sans';
+$sans-serif: $theme-sans-font, $sans-serif;
+$body-font-family: $sans-serif;
+
+$theme-serif-font: 'Verdana', 'Helvetica Neue', 'Helvetica', 'Arial', $sans-serif;
+$georgia: Georgia, Cambria, "Times New Roman", Times, serif;
+$serif: $georgia !default;
+$serif: $theme-serif-font, $serif;
+
+$header-sans-serif: "Source Sans", "Open Sans", Verdana, Geneva, sans-serif, sans-serif;
+
+
+//-----------------
+//  Theme Element Assignments
+//-----------------
+
+$body-bg: $gray-1;
+$container-bg: $gray-1;
+$login-register-bg: $gray-1;
+$content-wrapper-bg: $gray-1;
+$header-image: none;
+$header-bg: transparentize(lighten($secondary, 18.5%), .25);
+$courseware-header-image: none;
+$courseware-header-bg: transparentize(lighten($secondary, 18.5%), .25);
+$footer-bg: $secondary-25;
+$courseware-footer-border: 1px solid $main-bg-60;
+$courseware-footer-shadow: box-shadow(2px 1px 0 rgba(0, 0, 0, .1));
+$courseware-footer-margin: 50px;
+
+$faded-hr-image-1: linear-gradient($main-bg-60 0%, $main-bg-60);
+$faded-hr-image-2: linear-gradient($main-bg-60 0%, $main-bg-60);
+$faded-hr-image-3: linear-gradient($main-bg-60 0%, $main-bg-60);
+$faded-hr-image-4: linear-gradient($main-bg-60 0%, $main-bg-60);
+$faded-hr-image-5: linear-gradient($main-bg-60 0%, $main-bg-60);
+$faded-hr-image-6: linear-gradient($main-bg-60 0%, $main-bg-60);
+
+$base-font-color: $black;
+$lighter-base-font-color: $black-80;
+$very-light-text: $gray-1;
+
+$link-color: $black-80;
+$link-color-d1: $black-80;
+$link-hover: $light-color;
+$site-status-color: $bg-color;
+
+$header-graphic-super-color: $dark-color;
+$header-graphic-sub-color: $lighter-base-font-color;
+
+$header-link-color: $dark-color;
+$header-link-hover: $light-color;
+
+$button-color: $main-color;
+$button-archive-color: $gray-3;
+
+$shadow-color: $gray;
+
+// actions
+$button-bg-image: none;
+$button-bg-color: $gray-3;
+$button-bg-hover-color: $gray-1;
+
+// actions - primary
+$action-primary-bg: $main-color;
+$action-primary-fg: $gray-2;
+$action-primary-shadow: transparent;
+
+// focused - hover/active pseudo states
+$action-primary-focused-bg: $dark-color;
+$action-primary-focused-fg: $gray-1;
+
+// current or active navigation item
+$action-primary-active-bg: $dark-color;
+$action-primary-active-fg: $gray-1;
+$action-primary-active-shadow: transparent;
+$action-primary-active-focused-fg: $gray-2;
+$action-primary-active-focused-shadow: transparent;
+
+// disabled
+$action-primary-disabled-bg: $gray-75;
+$action-prmary-disabled-fg: $gray-1;
+
+
+
+// actions - secondary
+$action-secondary-bg: $secondary;
+$action-secondary-fg: $gray;
+$action-secondary-shadow: transparent;
+
+// focused - hover/active pseudo states
+$action-secondary-focused-bg: $secondary-50;
+$action-secondary-focused-fg: $gray;
+
+// current or active navigation item
+$action-secondary-active-bg: $secondary-50;
+$action-secondary-active-fg: $gray;
+$action-secondary-active-shadow: transparent;
+$action-secondary-active-focused-fg: $gray-75;
+$action-secondary-active-focused-shadow: transparent;
+
+// disabled
+$action-secondary-disabled-bg: $gray-3;
+$action-secondary-disabled-fg: $gray;
+
+//
+
+$border-color-1: $main-bg-60;
+$border-color-2: $main-bg-60;
+$border-color-3: $main-bg-60;
+$outer-border-color: $main-bg-60;
+
+$sidebar-color: $gray-1;
+
+$homepage__header--gradient__color--alpha: $secondary-25;
+$homepage__header--gradient__color--bravo: $secondary-25;
+$homepage__header--background: $secondary-25;
+$dashboard-profile-header-image: none;
+$dashboard-profile-header-color: $secondary-25;
+$dashboard-profile-color: $gray-3;
+$dot-color: $main-bg-60;
+
+$course-bg-color: $gray-3;
+$course-bg-image: none;
+$account-content-wrapper-bg: $gray-1;
+
+$course-profile-bg: $gray-1;
+$course-header-bg: transparentize($gray-1, .1);
+
+$sidebar-chapter-bg-top: transparentize($gray-1, .3);
+$sidebar-chapter-bg-bottom: transparentize($gray-1, .9);
+$sidebar-chapter-bg: $gray-2;
+$sidebar-active-image: $gray-3;
+
+$form-bg-color: $gray-1;
+$modal-bg-color: $gray-1;
+
+//TOP HEADER IMAGE MARGIN
+$header_image_margin: -77px;
+
+//FOOTER MARGIN
+$baseline: 20px !default;
+$footer_margin: ($baseline/4) 0;
+
+//-----------------
+//  CSS BG Images
+//-----------------
+$homepage-bg-image: url('../images/iedra.jpg');
+
+$login-banner-image: none;
+$register-banner-image: none;
+
+$video-thumb-url: '../images/edx.png';
+
+//-----------------
+//  Mixin Styles
+//-----------------
+@mixin login_register_h1_style {
+    clip: auto !important;
+    height: 50px;
+    width: 550px;
+    top: 0;
+}
+
+@mixin footer_references_style {
+    margin: 0 !important;
+    text-align: right;
+}
+
+//-----------------
+//  Text Styles
+//-----------------
+p.uned-h1 {
+    font-size: 26px;
+    line-height: 30px;
+    margin: 10px 0px;
+    font-family: "Verdana";
+    font-weight: bold;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+
+p.uned-h1.index {
+    margin-top: 40px;
+}
+
+p.uned-h2 {
+    font-size: 22px;
+    line-height: 30px;
+    margin: 10px 0px;
+    font-family: "Verdana";
+    font-weight: bold;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+
+p.uned-paragraph {
+    margin: 0px 0px 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    font-family: $theme-serif-font;
+}
+
+ul.uned-tos li.uned {
+    margin: 0px;
+    list-style: none;
+    font-size: 16px;
+}
+
+a.uned {
+    color: #520058 !important;
+    text-decoration: none !important;
+    font-family: $serif;
+    line-height: 1.6em;
+}
+
+li.uned {
+    margin: 0px 0px 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    margin: 10px 0px;
+    font-family: "Verdana";
+    text-rendering: optimizelegibility;
+}
+
+
+.header-global .user .dropdown.dropdown-button,
+body.register.verification-process.step-requirements .header-global .user .dropdown.dropdown-button.slim {
+    padding: 5px 10px 15px 10px;
+    border-radius: 0px;
+}
+
+.header-global .user .dropdown.dropdown-button.slim {
+    padding: 1px 10px 28px 10px;
+    border-radius: 0px;
+}
+
+body.view-profile {
+    .header-global .user .dropdown.dropdown-button {
+        padding: 10px 10px 19px 10px;
+        border-radius: 0px;
+    }
+}
+
+.header-global .user .user-link .user-image-frame {
+    max-width: 44px;
+}
+
+.user-link-username {
+    margin-right: 4px;
+}
+
+body.view-in-course {
+    background-color: $gray-1!important;
+    header.global.slim {
+        background-color: $header-bg;
+        border-bottom-color: #fff;
+        h1.logo {
+            &:before {
+                background-image: -webkit-linear-gradient(#fff 0%, #fff);
+            }
+        }
+    }
+}
+
+.enroll-option .hint {
+    z-index: 1;
+}
+
+header.global .nav-global li a:hover,
+header.global .nav-global li a:active,
+header.global .nav-global li a:focus {
+    color: $dark-color !important;
+}
+
+.course-index .accordion .course-navigation .button-chapter {
+    color: $dark-color !important;
+}
+
+a.uned-abierta-sysadmin {
+    color: $dark-color !important;
+}
+
+a.uned-abierta-sysadmin:hover {
+    color: #b62567 !important;
+}
+
+a.uned-abierta-sysadmin.active-section {
+    color: #551A8B !important;
+}
+
+.dashboard .my-courses .course .wrapper-messages-primary .message.message-upsell .action-upgrade.action-upgrade-honor {
+    box-shadow: 0 2px 1px 0 #0078B0;
+    background: #1790C7;
+
+    &:hover, &:active, &:focus {
+        background: #66AECF;
+    }
+}
+
+a.blue.pull-right.dashboard-button {
+    border-radius: 3px;
+    font-family: $theme-serif-font;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    display: inline-block;
+    margin: 10px 0 20px 0;
+    background: rgb(0, 120, 176);
+    padding: 10px (20px);
+    color: white;
+}
+
+a.pay-tooltip::before {
+    content: attr(data-tip);
+    font-size: 12px;
+    position:absolute;
+    z-index: 999;
+    //white-space:nowrap;
+    bottom:9999px;
+    left: 20%;
+    background:#000;
+    color:#e0e0e0;
+    padding:0px 7px;
+    //line-height: 24px;
+    //height: 24px;
+    opacity: 0;
+    transition:opacity 0.4s ease-out;
+}
+
+a.pay-tooltip:hover::before {
+    opacity: 1;
+    bottom:-35px;
+}
+
+button.btn.generate_certs.pay-tooltip {
+   position: relative;
+}
+
+button.btn.generate_certs.pay-tooltip::before {
+    content: attr(data-tip);
+    font-size: 12px;
+    position:absolute;
+    z-index: 999;
+    width: 120px;
+    bottom:9999px;
+    left: 10%;
+    background:#000;
+    color:#e0e0e0;
+    padding:0px 7px;
+    opacity: 0;
+    transition:opacity 0.4s ease-out;
+}
+
+button.btn.generate_certs.pay-tooltip:hover::before {
+    opacity: 1;
+    bottom: -27px;
+}
+
+.student-grade-message {
+    color: #b20000;
+    font-weight: bold;
+}
+
+a.dashboard-course-link,
+a.dashboard-course-link:hover {
+    color: #00533f !important;
+}
+
+a.uned-anchor,
+a.uned-anchor:visited {
+    color: #00533f !important;
+}
+
+a.uned-anchor:hover {
+    text-decoration: underline;
+}
+
+.faq-footer {
+    display: none;
+}
+
+@media screen and (max-width: 780px) {
+    .faq-header {
+        display: none !important;
+    }
+    .faq-footer {
+        display: block;
+    }
+    .tablet-mobile {
+        min-width: initial !important;
+    }
+    .box-tablet-mobile {
+        width: initial !important;
+        min-width: 200px;
+    }
+    .course-info header.course-profile {
+        height: initial;
+    }
+    .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.register {
+        width: 100%;
+    }
+}
+
+header.global h1.logo img {
+    height: 30px;
+}
+
+article.course.z-position {
+    z-index: 0;
+}
+
+.course-title.course-code-large {
+    margin-bottom: -5px!important;
+}
+
+header.global {
+    h1.logo {
+        float: left;
+        margin: -2px 39px 0px 0px;
+        position: relative;
+        a {
+            display: block;
+        }
+    }
+}
+
+header.global-new {
+    h1.logo {
+        float: left;
+        margin: -2px 39px 0px 10px;
+        position: relative;
+        a {
+            display: block;
+        }
+    }
+}
+
+#register_error {
+    color: rgb(0, 0, 0)!important;
+}
+
+.course-actions {
+    float: right;
+}
+
+.wrapper-action-more {
+    float: none!important;
+}
+
+.xmodule_display.xmodule_SequenceModule .sequence-nav ol li a ul.sequence-list-unit {
+    background: #333;
+    color: #fff;
+    font-family: "Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+    line-height: 0.5em;
+    right: 0;
+    opacity: 0.0;
+    padding: 6px;
+    position: absolute;
+    top: 48px;
+    text-shadow: 0 -1px 0 #000;
+    -webkit-transition: all 0.1s cubic-bezier(0.77, 0, 0.175, 1) 0s;
+    -moz-transition: all 0.1s cubic-bezier(0.77, 0, 0.175, 1) 0s;
+    transition: all 0.1s cubic-bezier(0.77, 0, 0.175, 1) 0s;
+    white-space: pre;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.xmodule_display.xmodule_SequenceModule .sequence-nav ol li a:hover ul.sequence-list-unit {
+    display: block;
+    margin-top: 4px;
+    opacity: 1.0;
+    visibility: visible;
+}
+
+.xmodule_display.xmodule_SequenceModule .sequence-nav ol li a ul.sequence-list-unit::after {
+    background: #333;
+    content: " ";
+    display: block;
+    height: 10px;
+    right: 18px;
+    position: absolute;
+    top: -5px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 10px;
+}
+
+.wrapper-course-material ol.course-tabs li a:focus {
+    outline: 2px solid black;
+}
+
+input[type="checkbox"]:focus, input[type="radio"]:focus {
+    outline: 2px solid grey !important;
+    -moz-outline: 2px solid grey !important;
+    -moz-user-focus: normal !important;
+}
+
+h1.sim-header-2,
+p.sim-header-2 {
+    font-size: 18px;
+    line-height: 26.64px;
+}
+
+.wrapper-course-material ol.course-tabs li a:focus {
+    outline: 2px solid black;
+}
+
+section.about p.uned-honor {
+    font-family: "Verdana";
+    font-size: 14px;
+}
+
+.register-modal {
+    background-color: $body-bg !important;
+}
+
+.register-modal-window {
+    left: 36% !important;
+    top: 20%;
+    box-shadow: 0 0px 30px 0 rgba(0,0,0,0.9) !important;
+}
+
+.review-info {
+    text-align: center !important;
+}
+
+.review-button {
+    margin-bottom: 1em!important;
+    padding: 5px!important;
+    margin-right: 1em!important;
+    margin-left: 1em!important;
+}
+
+.save-button {
+    font-size: 20px!important;
+    width: 40%!important;
+}
+
+.edit-button {
+    width: 25%!important;
+    font-size: 15px!important;
+}
+
+.cancel-button {
+    width: 25%!important;
+    font-size: 15px!important;
+}
+
+.close-button {
+    float: right!important;
+    background-color: transparent!important;
+    color: #252525!important;
+    box-shadow: none!important;
+    border: none!important;
+    background-image: none!important;
+}
+
+.review-title {
+    padding-top: 1em!important;
+    text-align: center!important;
+    font-weight: bold!important;
+}
+
+.review-font {
+    height: auto!important;
+    line-height: 1.5em!important;
+    border-radius: 0!important;
+    font-family: "Source Sans","Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif!important;
+    font-style: normal!important;
+    font-weight: 500;
+}
+
+.form-field {
+    list-style-type: circle;
+}
+
+.review-info-ul {
+    padding-right: 30px;
+}
+
+.input-checkbox {
+    float: right;
+    position: absolute;
+    margin: 0!important;
+}
+
+.label-checkbox {
+    padding-left: 20px !important;
+}
+
+ol.uned.list-disc {
+    list-style-type: disc;
+}
+section.about li.uned p+p {
+    margin-top: 0px;
+}
+
+section.about li.uned p+p.uned-faq-ending {
+    margin-top: 20px;
+}
+
+li.uned.faq-payments {
+    margin-bottom: 40px;
+}
+
+.header-global .nav-global li a:hover {
+    color: #00533f;
+}
+
+.heading-group h1 a.org {
+    font: italic 700 0.6em/1em "Source Sans","Source Sans","Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+    letter-spacing: 0px;
+    margin-left: 15px;
+    text-shadow: 0 1px rgba(255,255,255,0.6);
+    text-transform: none;
+}
+.heading-group h1 a.org:hover,
+.heading-group h1 a.org:focus,
+.heading-group h1 a.org:active {
+    color: #585858;
+}
+
+.header-global.slim h2 {
+    width: 55%!important;
+}
